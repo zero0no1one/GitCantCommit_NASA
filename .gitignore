@@ -4,3 +4,6 @@
 
 # Downloaded plugin installer archives
 *.zip
+
+# Blender backups
+*.blend1
