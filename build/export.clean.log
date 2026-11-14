@@ -1,0 +1,206 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+Found a repository at C:/dev/godot/new-game-project/.git/.
+Selected repository path: C:/dev/godot/new-game-project/.git/.
+GitPlugin: Loaded system CA certificates
+[   0% ] first_scan_filesystem | Started Project initialization (5 steps)
+[   0% ] first_scan_filesystem | Scanning file structure...
+[  16% ] first_scan_filesystem | Loading global class names...
+[  33% ] first_scan_filesystem | Verifying GDExtensions...
+[  50% ] first_scan_filesystem | Creating autoload scripts...
+[  66% ] first_scan_filesystem | Initializing plugins...
+MCP | plugin disabled in headless mode
+[  83% ] first_scan_filesystem | Starting file scan...
+[ DONE ] first_scan_filesystem
+
+[   0% ] update_scripts_classes | Started Registering global classes... (2 steps)
+[   0% ] update_scripts_classes | 
+[  33% ] update_scripts_classes | 
+[ DONE ] update_scripts_classes
+
+MCP | export: stripping autoload/_mcp_game_helper from the exported pack (restored in the editor after export)
+[   0% ] savepack | Started Packing (102 steps)
+[   1% ] savepack | Storing File: res://vercel.json
+[   2% ] savepack | Storing File: res://.godot/imported/astronaut_team_ORM_c0ecfa1c-419a-405f-b09e-5c7672f99ab4.jpg-7f46a7ab127d3b1ff3dcf8ae48c1a612.s3tc.ctex
+[   2% ] savepack | Storing File: res://.godot/imported/astronaut_team_ORM_c0ecfa1c-419a-405f-b09e-5c7672f99ab4.jpg-7f46a7ab127d3b1ff3dcf8ae48c1a612.etc2.ctex
+[   2% ] savepack | Storing File: res://assets/models/astronaut_team_ORM_c0ecfa1c-419a-405f-b09e-5c7672f99ab4.jpg.import
+[   3% ] savepack | Storing File: res://assets/team/celestial_visual.gdc
+[   4% ] savepack | Storing File: res://.godot/exported/133200997/export-22b8edb879c7b5b45b46ea87b02f68f0-survey_beacon.scn
+[   6% ] savepack | Storing File: res://.godot/exported/133200997/export-875a9414dc931f39431dc93199e8a913-sun.scn
+[   7% ] savepack | Storing File: res://.godot/exported/133200997/export-6031d35ff17d5dd73bdd6fdaa877a683-lunar_rover.scn
+[   8% ] savepack | Storing File: res://.godot/exported/133200997/export-535e0e188affee6647a94de68bca780d-earth.scn
+[   9% ] savepack | Storing File: res://.godot/imported/astronaut_team_NormalGL_c0ecfa1c-419a-405f-b09e-5c7672f99ab4.png-94d7e959de73ba918e50be0bfeda8cd2.s3tc.ctex
+[   9% ] savepack | Storing File: res://.godot/imported/astronaut_team_NormalGL_c0ecfa1c-419a-405f-b09e-5c7672f99ab4.png-94d7e959de73ba918e50be0bfeda8cd2.etc2.ctex
+[   9% ] savepack | Storing File: res://assets/models/astronaut_team_NormalGL_c0ecfa1c-419a-405f-b09e-5c7672f99ab4.png.import
+[  11% ] savepack | Storing File: res://.godot/imported/survey_beacon_ORM_0a93ead5-76b3-481e-aaf9-d4c4a3da126a.jpg-44d788b8374710f471dac6b81fd6d7d5.s3tc.ctex
+[  11% ] savepack | Storing File: res://.godot/imported/survey_beacon_ORM_0a93ead5-76b3-481e-aaf9-d4c4a3da126a.jpg-44d788b8374710f471dac6b81fd6d7d5.etc2.ctex
+[  11% ] savepack | Storing File: res://assets/team/models/survey_beacon_ORM_0a93ead5-76b3-481e-aaf9-d4c4a3da126a.jpg.import
+[  12% ] savepack | Storing File: res://.godot/imported/survey_beacon_NormalGL_0a93ead5-76b3-481e-aaf9-d4c4a3da126a.png-66c19e41bb0a2907273fb3c18dd7c3ac.s3tc.ctex
+[  12% ] savepack | Storing File: res://.godot/imported/survey_beacon_NormalGL_0a93ead5-76b3-481e-aaf9-d4c4a3da126a.png-66c19e41bb0a2907273fb3c18dd7c3ac.etc2.ctex
+[  12% ] savepack | Storing File: res://assets/team/models/survey_beacon_NormalGL_0a93ead5-76b3-481e-aaf9-d4c4a3da126a.png.import
+[  13% ] savepack | Storing File: res://.godot/imported/survey_beacon_Color_0a93ead5-76b3-481e-aaf9-d4c4a3da126a.jpg-e35472b599aca1f8a454873ee78376b5.s3tc.ctex
+[  13% ] savepack | Storing File: res://.godot/imported/survey_beacon_Color_0a93ead5-76b3-481e-aaf9-d4c4a3da126a.jpg-e35472b599aca1f8a454873ee78376b5.etc2.ctex
+[  13% ] savepack | Storing File: res://assets/team/models/survey_beacon_Color_0a93ead5-76b3-481e-aaf9-d4c4a3da126a.jpg.import
+[  14% ] savepack | Storing File: res://.godot/imported/survey_beacon.glb-2452d43ad819f084cc1047d3bbc3cff2.scn
+[  14% ] savepack | Storing File: res://assets/team/models/survey_beacon.glb.import
+[  16% ] savepack | Storing File: res://.godot/imported/sun_ORM_b6e34d54-ebcd-43f2-8149-17148bf78ac4.jpg-bdd9be881624fabcf0f1240350a0bd48.s3tc.ctex
+[  16% ] savepack | Storing File: res://.godot/imported/sun_ORM_b6e34d54-ebcd-43f2-8149-17148bf78ac4.jpg-bdd9be881624fabcf0f1240350a0bd48.etc2.ctex
+[  16% ] savepack | Storing File: res://assets/team/models/sun_ORM_b6e34d54-ebcd-43f2-8149-17148bf78ac4.jpg.import
+[  17% ] savepack | Storing File: res://.godot/exported/133200997/export-746ba1f4777b517f6975d5476e460451-title.scn
+[  18% ] savepack | Storing File: res://scenes/title/title.gdc
+[  19% ] savepack | Storing File: res://scenes/mission/site_world.gdc
+[  21% ] savepack | Storing File: res://scenes/mission/plan_phase.gdc
+[  22% ] savepack | Storing File: res://.godot/exported/133200997/export-cc30d6fb122fc3d38cbda1dd253d3ede-mission.scn
+[  23% ] savepack | Storing File: res://scenes/mission/mission.gdc
+[  25% ] savepack | Storing File: res://scenes/mission/hold_phase.gdc
+[  26% ] savepack | Storing File: res://scenes/mission/descent_phase.gdc
+[  27% ] savepack | Storing File: res://scenes/mission/debrief.gdc
+[  28% ] savepack | Storing File: res://scenes/mission/astronaut.gdc
+[  30% ] savepack | Storing File: res://scenes/mission/widgets/time_dial.gdc
+[  31% ] savepack | Storing File: res://scenes/mission/widgets/sun_ribbon.gdc
+[  32% ] savepack | Storing File: res://scenes/mission/widgets/sunlight_clock.gdc
+[  33% ] savepack | Storing File: res://scenes/common/starfield.gdc
+[  34% ] savepack | Storing File: res://scenes/campaign/mission_node.gdc
+[  35% ] savepack | Storing File: res://.godot/exported/133200997/export-637d6dd2906b8ba4bb2b554b8fe29d6a-campaign.scn
+[  36% ] savepack | Storing File: res://scenes/campaign/campaign.gdc
+[  37% ] savepack | Storing File: res://data/mission.json
+[  39% ] savepack | Storing File: res://data/campaign.json
+[  40% ] savepack | Storing File: res://.godot/imported/wheel_dust_4x4.png-be6fc59ced420ac102ea992a49594019.ctex
+[  40% ] savepack | Storing File: res://assets/vfx/wheel_dust_4x4.png.import
+[  41% ] savepack | Storing File: res://.godot/imported/visor_glint.png-25b0d66ce9cf9d0378276facb9cd6220.ctex
+[  41% ] savepack | Storing File: res://assets/vfx/visor_glint.png.import
+[  43% ] savepack | Storing File: res://.godot/imported/touchdown_spray_4x4.png-9925a73e5b0796afaea57d2f00235c70.ctex
+[  43% ] savepack | Storing File: res://assets/vfx/touchdown_spray_4x4.png.import
+[  44% ] savepack | Storing File: res://.godot/imported/footstep_dust_4x4.png-c1fda687670c191f88e57df29e12bfe5.ctex
+[  44% ] savepack | Storing File: res://assets/vfx/footstep_dust_4x4.png.import
+[  45% ] savepack | Storing File: res://.godot/imported/fp_rig.glb-81b54157351e7bd77666271baf7a9240.scn
+[  45% ] savepack | Storing File: res://assets/models/fp_rig.glb.import
+[  46% ] savepack | Storing File: res://scripts/sfx.gdc
+[  48% ] savepack | Storing File: res://scripts/texts.gdc
+[  49% ] savepack | Storing File: res://scripts/ui_kit.gdc
+[  50% ] savepack | Storing File: res://scripts/scoring.gdc
+[  51% ] savepack | Storing File: res://.godot/imported/sun_NormalGL_b6e34d54-ebcd-43f2-8149-17148bf78ac4.png-417b9f9565c1afd06538bb2c6af77e89.s3tc.ctex
+[  51% ] savepack | Storing File: res://.godot/imported/sun_NormalGL_b6e34d54-ebcd-43f2-8149-17148bf78ac4.png-417b9f9565c1afd06538bb2c6af77e89.etc2.ctex
+[  51% ] savepack | Storing File: res://assets/team/models/sun_NormalGL_b6e34d54-ebcd-43f2-8149-17148bf78ac4.png.import
+[  53% ] savepack | Storing File: res://.godot/imported/sun_Color_b6e34d54-ebcd-43f2-8149-17148bf78ac4.jpg-d3324d9faa1c09df98d90169c6dddd56.s3tc.ctex
+[  53% ] savepack | Storing File: res://.godot/imported/sun_Color_b6e34d54-ebcd-43f2-8149-17148bf78ac4.jpg-d3324d9faa1c09df98d90169c6dddd56.etc2.ctex
+[  53% ] savepack | Storing File: res://assets/team/models/sun_Color_b6e34d54-ebcd-43f2-8149-17148bf78ac4.jpg.import
+[  54% ] savepack | Storing File: res://.godot/imported/sun.glb-573991af5011ba3b26890f33a0eaf7fc.scn
+[  54% ] savepack | Storing File: res://assets/team/models/sun.glb.import
+[  55% ] savepack | Storing File: res://.godot/imported/lunar_rover_ORM_11bc8f5e-3a5b-49b3-b36e-ccfa28d95a4b.jpg-d43e1bafc196a3aa8aa98b379e497f94.s3tc.ctex
+[  55% ] savepack | Storing File: res://.godot/imported/lunar_rover_ORM_11bc8f5e-3a5b-49b3-b36e-ccfa28d95a4b.jpg-d43e1bafc196a3aa8aa98b379e497f94.etc2.ctex
+[  55% ] savepack | Storing File: res://assets/team/models/lunar_rover_ORM_11bc8f5e-3a5b-49b3-b36e-ccfa28d95a4b.jpg.import
+[  56% ] savepack | Storing File: res://.godot/imported/lunar_rover_NormalGL_11bc8f5e-3a5b-49b3-b36e-ccfa28d95a4b.png-2779dd2c63861e3b4ad027fa11ead0d9.s3tc.ctex
+[  56% ] savepack | Storing File: res://.godot/imported/lunar_rover_NormalGL_11bc8f5e-3a5b-49b3-b36e-ccfa28d95a4b.png-2779dd2c63861e3b4ad027fa11ead0d9.etc2.ctex
+[  56% ] savepack | Storing File: res://assets/team/models/lunar_rover_NormalGL_11bc8f5e-3a5b-49b3-b36e-ccfa28d95a4b.png.import
+[  58% ] savepack | Storing File: res://.godot/imported/lunar_rover_Color_11bc8f5e-3a5b-49b3-b36e-ccfa28d95a4b.jpg-71131e09a0fa02d25c500ff66a0ac5da.s3tc.ctex
+[  58% ] savepack | Storing File: res://.godot/imported/lunar_rover_Color_11bc8f5e-3a5b-49b3-b36e-ccfa28d95a4b.jpg-71131e09a0fa02d25c500ff66a0ac5da.etc2.ctex
+[  58% ] savepack | Storing File: res://assets/team/models/lunar_rover_Color_11bc8f5e-3a5b-49b3-b36e-ccfa28d95a4b.jpg.import
+[  59% ] savepack | Storing File: res://.godot/imported/lunar_rover.glb-ef28551de78a0fc81ce23a9b36c6efcb.scn
+[  59% ] savepack | Storing File: res://assets/team/models/lunar_rover.glb.import
+[  60% ] savepack | Storing File: res://.godot/imported/earth_ORM_7719fef2-1f62-4a09-ab2d-ba230acede61.jpg-9b786e14ddf58c7e7af4f48912df4bc9.s3tc.ctex
+[  60% ] savepack | Storing File: res://.godot/imported/earth_ORM_7719fef2-1f62-4a09-ab2d-ba230acede61.jpg-9b786e14ddf58c7e7af4f48912df4bc9.etc2.ctex
+[  60% ] savepack | Storing File: res://assets/team/models/earth_ORM_7719fef2-1f62-4a09-ab2d-ba230acede61.jpg.import
+[  62% ] savepack | Storing File: res://.godot/imported/earth_NormalGL_7719fef2-1f62-4a09-ab2d-ba230acede61.png-58e075e05e456eb81e31da6b9a64e6c3.s3tc.ctex
+[  62% ] savepack | Storing File: res://.godot/imported/earth_NormalGL_7719fef2-1f62-4a09-ab2d-ba230acede61.png-58e075e05e456eb81e31da6b9a64e6c3.etc2.ctex
+[  62% ] savepack | Storing File: res://assets/team/models/earth_NormalGL_7719fef2-1f62-4a09-ab2d-ba230acede61.png.import
+[  63% ] savepack | Storing File: res://.godot/imported/lander.glb-ae135ddab9557c10dd285093031d0141.scn
+[  63% ] savepack | Storing File: res://assets/models/procedural/lander.glb.import
+[  64% ] savepack | Storing File: res://.godot/imported/lander_lander_normal.jpg-28eb2b26e44b98a1a0cec7070247a2f7.s3tc.ctex
+[  64% ] savepack | Storing File: res://.godot/imported/lander_lander_normal.jpg-28eb2b26e44b98a1a0cec7070247a2f7.etc2.ctex
+[  64% ] savepack | Storing File: res://assets/models/procedural/lander_lander_normal.jpg.import
+[  65% ] savepack | Storing File: res://.godot/imported/lander_lander_color.jpg-86a2161368a7d9ba69ac784b73549b4a.s3tc.ctex
+[  65% ] savepack | Storing File: res://.godot/imported/lander_lander_color.jpg-86a2161368a7d9ba69ac784b73549b4a.etc2.ctex
+[  65% ] savepack | Storing File: res://assets/models/procedural/lander_lander_color.jpg.import
+[  66% ] savepack | Storing File: res://.godot/imported/earth_Color_7719fef2-1f62-4a09-ab2d-ba230acede61.jpg-5420a31cb1b5db4b7d423c0a76f85272.s3tc.ctex
+[  66% ] savepack | Storing File: res://.godot/imported/earth_Color_7719fef2-1f62-4a09-ab2d-ba230acede61.jpg-5420a31cb1b5db4b7d423c0a76f85272.etc2.ctex
+[  66% ] savepack | Storing File: res://assets/team/models/earth_Color_7719fef2-1f62-4a09-ab2d-ba230acede61.jpg.import
+[  67% ] savepack | Storing File: res://.godot/imported/earth.glb-f425e30a355c38c1aac935a7e576b67f.scn
+[  67% ] savepack | Storing File: res://assets/team/models/earth.glb.import
+[  68% ] savepack | Storing File: res://.godot/imported/astronaut_team_Color_c0ecfa1c-419a-405f-b09e-5c7672f99ab4.jpg-fbe7d033caa52ec0e760c2636d649443.s3tc.ctex
+[  68% ] savepack | Storing File: res://.godot/imported/astronaut_team_Color_c0ecfa1c-419a-405f-b09e-5c7672f99ab4.jpg-fbe7d033caa52ec0e760c2636d649443.etc2.ctex
+[  68% ] savepack | Storing File: res://assets/models/astronaut_team_Color_c0ecfa1c-419a-405f-b09e-5c7672f99ab4.jpg.import
+[  69% ] savepack | Storing File: res://.godot/imported/astronaut_team.glb-c7258fd1d39e33514b203b09b2366831.scn
+[  69% ] savepack | Storing File: res://assets/models/astronaut_team.glb.import
+[  71% ] savepack | Storing File: res://scripts/models.gdc
+[  72% ] savepack | Storing File: res://.godot/exported/133200997/export-a94d9f6cb48ca89894fc5df2fa434568-theme.res
+[  73% ] savepack | Storing File: res://.godot/imported/rocks.glb-e483a590f55fb29cab4dd10aa6734905.scn
+[  73% ] savepack | Storing File: res://assets/models/procedural/rocks.glb.import
+[  74% ] savepack | Storing File: res://.godot/imported/rocks_rock_detail_normal.png-2a29ffad6d45876617769566bbf8e6ab.s3tc.ctex
+[  74% ] savepack | Storing File: res://.godot/imported/rocks_rock_detail_normal.png-2a29ffad6d45876617769566bbf8e6ab.etc2.ctex
+[  74% ] savepack | Storing File: res://assets/models/procedural/rocks_rock_detail_normal.png.import
+[  76% ] savepack | Storing File: res://.godot/imported/vfx_meshes.glb-e14279b86cc571db3fb8e9302064c146.scn
+[  76% ] savepack | Storing File: res://assets/models/vfx_meshes.glb.import
+[  77% ] savepack | Storing File: res://.godot/imported/terrain_sl3_regolith_normal.png-84dbde631e449c95f3af43bfb9f3ea1a.s3tc.ctex
+[  77% ] savepack | Storing File: res://.godot/imported/terrain_sl3_regolith_normal.png-84dbde631e449c95f3af43bfb9f3ea1a.etc2.ctex
+[  77% ] savepack | Storing File: res://assets/models/terrain_sl3_regolith_normal.png.import
+[  78% ] savepack | Storing File: res://.godot/imported/terrain_sl3_regolith_albedo.png-5d4022ab9125586f7824edffad62ac6c.s3tc.ctex
+[  78% ] savepack | Storing File: res://.godot/imported/terrain_sl3_regolith_albedo.png-5d4022ab9125586f7824edffad62ac6c.etc2.ctex
+[  78% ] savepack | Storing File: res://assets/models/terrain_sl3_regolith_albedo.png.import
+[  80% ] savepack | Storing File: res://.godot/imported/terrain_sl3.glb-3b44661c5df8b06d116e0ed24f1128c4.scn
+[  80% ] savepack | Storing File: res://assets/models/terrain_sl3.glb.import
+[  81% ] savepack | Storing File: res://.godot/imported/terrain_apollo-11_regolith_normal.png-2e8557d09a7f4260f22f367c79a99398.s3tc.ctex
+[  81% ] savepack | Storing File: res://.godot/imported/terrain_apollo-11_regolith_normal.png-2e8557d09a7f4260f22f367c79a99398.etc2.ctex
+[  81% ] savepack | Storing File: res://assets/models/terrain_apollo-11_regolith_normal.png.import
+[  82% ] savepack | Storing File: res://.godot/imported/terrain_apollo-11_regolith_albedo.png-5c701d8f48d6deaaa43e11a503bfd0c9.s3tc.ctex
+[  82% ] savepack | Storing File: res://.godot/imported/terrain_apollo-11_regolith_albedo.png-5c701d8f48d6deaaa43e11a503bfd0c9.etc2.ctex
+[  82% ] savepack | Storing File: res://assets/models/terrain_apollo-11_regolith_albedo.png.import
+[  83% ] savepack | Storing File: res://.godot/imported/terrain_apollo-11.glb-26eeb137b49942004fb125495af8a7da.scn
+[  83% ] savepack | Storing File: res://assets/models/terrain_apollo-11.glb.import
+[  85% ] savepack | Storing File: res://.godot/imported/RussoOne-Regular.ttf-6dfa1e4f3354d5ba40d0775191309a1f.fontdata
+[  85% ] savepack | Storing File: res://assets/fonts/RussoOne-Regular.ttf.import
+[  86% ] savepack | Storing File: res://.godot/imported/site_pin.glb-9b6f7cad760ad47b7f7679d5148cdaf5.scn
+[  86% ] savepack | Storing File: res://assets/models/site_pin.glb.import
+[  87% ] savepack | Storing File: res://.godot/imported/ChakraPetch-SemiBold.ttf-87a6da42122dc6ad3132f6ee6c79d8d9.fontdata
+[  87% ] savepack | Storing File: res://assets/fonts/ChakraPetch-SemiBold.ttf.import
+[  88% ] savepack | Storing File: res://.godot/imported/ChakraPetch-Regular.ttf-da050ac5f5f58524f1048d8edddf525b.fontdata
+[  88% ] savepack | Storing File: res://assets/fonts/ChakraPetch-Regular.ttf.import
+[  90% ] savepack | Storing File: res://.godot/imported/ChakraPetch-Bold.ttf-36b1681cc4458f50138f3d51061f0fbc.fontdata
+[  90% ] savepack | Storing File: res://assets/fonts/ChakraPetch-Bold.ttf.import
+[  91% ] savepack | Storing File: res://scripts/campaign.gdc
+[  92% ] savepack | Storing File: res://scripts/game.gdc
+[  93% ] savepack | Storing File: res://.godot/imported/moon_globe_moon_normal_1024.jpg-3acd2b7b96c207d0a07637b7e9692d77.s3tc.ctex
+[  93% ] savepack | Storing File: res://.godot/imported/moon_globe_moon_normal_1024.jpg-3acd2b7b96c207d0a07637b7e9692d77.etc2.ctex
+[  93% ] savepack | Storing File: res://assets/models/moon_globe_moon_normal_1024.jpg.import
+[  95% ] savepack | Storing File: res://.godot/imported/moon_globe_moon_color_1024.jpg-f8bbd3332cd21d4d2995ef3a4c49fbfe.s3tc.ctex
+[  95% ] savepack | Storing File: res://.godot/imported/moon_globe_moon_color_1024.jpg-f8bbd3332cd21d4d2995ef3a4c49fbfe.etc2.ctex
+[  95% ] savepack | Storing File: res://assets/models/moon_globe_moon_color_1024.jpg.import
+[  96% ] savepack | Storing File: res://.godot/imported/moon_globe.glb-ad80dc3171d2d82e7e53be1f43129f83.scn
+[  96% ] savepack | Storing File: res://assets/models/moon_globe.glb.import
+[  97% ] savepack | Storing File: res://scripts/mission.gdc
+[  97% ] savepack | Storing File: res://assets/team/celestial_visual.gd.remap
+[  97% ] savepack | Storing File: res://assets/team/scenes/survey_beacon.tscn.remap
+[  97% ] savepack | Storing File: res://assets/team/scenes/sun.tscn.remap
+[  97% ] savepack | Storing File: res://assets/team/scenes/lunar_rover.tscn.remap
+[  97% ] savepack | Storing File: res://assets/team/scenes/earth.tscn.remap
+[  97% ] savepack | Storing File: res://scenes/title/title.tscn.remap
+[  97% ] savepack | Storing File: res://scenes/title/title.gd.remap
+[  97% ] savepack | Storing File: res://scenes/mission/site_world.gd.remap
+[  97% ] savepack | Storing File: res://scenes/mission/plan_phase.gd.remap
+[  97% ] savepack | Storing File: res://scenes/mission/mission.tscn.remap
+[  97% ] savepack | Storing File: res://scenes/mission/mission.gd.remap
+[  97% ] savepack | Storing File: res://scenes/mission/hold_phase.gd.remap
+[  97% ] savepack | Storing File: res://scenes/mission/descent_phase.gd.remap
+[  97% ] savepack | Storing File: res://scenes/mission/debrief.gd.remap
+[  97% ] savepack | Storing File: res://scenes/mission/astronaut.gd.remap
+[  97% ] savepack | Storing File: res://scenes/mission/widgets/time_dial.gd.remap
+[  97% ] savepack | Storing File: res://scenes/mission/widgets/sun_ribbon.gd.remap
+[  97% ] savepack | Storing File: res://scenes/mission/widgets/sunlight_clock.gd.remap
+[  97% ] savepack | Storing File: res://scenes/common/starfield.gd.remap
+[  97% ] savepack | Storing File: res://scenes/campaign/mission_node.gd.remap
+[  97% ] savepack | Storing File: res://scenes/campaign/campaign.tscn.remap
+[  97% ] savepack | Storing File: res://scenes/campaign/campaign.gd.remap
+[  97% ] savepack | Storing File: res://scripts/sfx.gd.remap
+[  97% ] savepack | Storing File: res://scripts/texts.gd.remap
+[  97% ] savepack | Storing File: res://scripts/ui_kit.gd.remap
+[  97% ] savepack | Storing File: res://scripts/scoring.gd.remap
+[  97% ] savepack | Storing File: res://scripts/models.gd.remap
+[  97% ] savepack | Storing File: res://ui/theme.tres.remap
+[  97% ] savepack | Storing File: res://scripts/campaign.gd.remap
+[  97% ] savepack | Storing File: res://scripts/game.gd.remap
+[  97% ] savepack | Storing File: res://scripts/mission.gd.remap
+[  97% ] savepack | Storing File: res://.godot/global_script_class_cache.cfg
+[  97% ] savepack | Storing File: res://.godot/uid_cache.bin
+[  97% ] savepack | Storing File: res://project.binary
+[ DONE ] savepack
+

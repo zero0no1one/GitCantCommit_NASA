@@ -3,7 +3,6 @@
 /android/
 
 # Web export output (CI rebuilds it; see .github/workflows/web.yml)
-/build/
 .vercel/
 
 # Downloaded plugin installer archives
@@ -24,3 +23,4 @@ blender/hunyuan/raw/*.glb
 
 .vercel
 .env*
+.claude
