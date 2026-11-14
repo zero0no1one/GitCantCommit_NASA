@@ -1,0 +1,101 @@
+# Builds the Sunline web export with headless Godot and deploys it to Vercel.
+#
+# Needs three repository secrets (Settings -> Secrets and variables -> Actions):
+#   VERCEL_TOKEN       a Vercel access token (vercel.com/account/tokens)
+#   VERCEL_ORG_ID      "orgId" from .vercel/project.json after a local `vercel link`
+#   VERCEL_PROJECT_ID  "projectId" from the same file
+# Without them the build still runs and uploads build/web as an artifact; only the deploy step is skipped.
+name: Web build and deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: web-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  GODOT_VERSION: 4.7.2
+  GODOT_RELEASE: 4.7.2-stable
+  TEMPLATE_DIR: ~/.local/share/godot/export_templates/4.7.2.stable
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cache Godot and web export templates
+        id: godot-cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/godot
+            ~/.local/share/godot/export_templates/4.7.2.stable
+          key: godot-${{ env.GODOT_RELEASE }}-web
+
+      - name: Install Godot and web export templates
+        if: steps.godot-cache.outputs.cache-hit != 'true'
+        run: |
+          set -euo pipefail
+          base="https://github.com/godotengine/godot-builds/releases/download/${GODOT_RELEASE}"
+          mkdir -p ~/godot "${TEMPLATE_DIR/#\~/$HOME}"
+          cd "$RUNNER_TEMP"
+          curl -fsSL -o SHA512-SUMS.txt "$base/SHA512-SUMS.txt"
+          curl -fsSL -o godot.zip "$base/Godot_v${GODOT_RELEASE}_linux.x86_64.zip"
+          curl -fsSL -o templates.tpz "$base/Godot_v${GODOT_RELEASE}_export_templates.tpz"
+          check() { want=$(grep " $2\$" SHA512-SUMS.txt | awk '{print $1}'); echo "$want  $1" | sha512sum -c -; }
+          check godot.zip "Godot_v${GODOT_RELEASE}_linux.x86_64.zip"
+          check templates.tpz "Godot_v${GODOT_RELEASE}_export_templates.tpz"
+          unzip -q godot.zip -d ~/godot
+          mv ~/godot/Godot_v${GODOT_RELEASE}_linux.x86_64 ~/godot/godot
+          unzip -q -j templates.tpz 'templates/web_*' 'templates/version.txt' -d "${TEMPLATE_DIR/#\~/$HOME}"
+          rm -f godot.zip templates.tpz
+
+      - name: Import assets
+        # a first headless import has crashed once on font import; a second pass picks up where it stopped
+        run: ~/godot/godot --headless --path . --import || ~/godot/godot --headless --path . --import
+
+      - name: Science tests (scoring parity with the Python reference, campaign fairness)
+        run: |
+          ~/godot/godot --headless --path . --script res://tests/test_scoring.gd
+          ~/godot/godot --headless --path . --script res://tests/test_campaign.gd
+
+      - name: Export web build
+        run: |
+          mkdir -p build/web
+          ~/godot/godot --headless --path . --export-release "Web" build/web/index.html
+          test -s build/web/index.pck && test -s build/web/index.wasm
+          cp vercel.json build/web/
+          ls -la build/web
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sunline-web
+          path: build/web
+          retention-days: 14
+
+  deploy:
+    needs: build
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    env:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: sunline-web
+          path: web
+
+      - name: Deploy to Vercel (production)
+        if: env.VERCEL_TOKEN != ''
+        run: npx --yes vercel@latest deploy web --prod --yes --token "$VERCEL_TOKEN"
+
+      - name: Vercel secrets missing
+        if: env.VERCEL_TOKEN == ''
+        run: echo "::warning::VERCEL_TOKEN is not set; skipped the deploy. The build is in the sunline-web artifact."

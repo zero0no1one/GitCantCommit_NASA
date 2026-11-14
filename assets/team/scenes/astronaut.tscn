@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="PackedScene" path="../models/astronaut.glb" id="1"]
+
+[node name="Astronaut" type="Node3D"]
+metadata/description = "Fictional MINT astronaut visual. Static T-pose, no skeleton or animations. Chosen display height approximately 1.85 m."
+
+[node name="Visual" parent="." instance=ExtResource("1")]
+position = Vector3(0, 0.925, 0)
+scale = Vector3(1.85362, 1.85362, 1.85362)

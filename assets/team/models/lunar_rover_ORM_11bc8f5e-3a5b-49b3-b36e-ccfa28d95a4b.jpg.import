@@ -1,0 +1,45 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://cbtalj2n2l5pk"
+path.s3tc="res://.godot/imported/lunar_rover_ORM_11bc8f5e-3a5b-49b3-b36e-ccfa28d95a4b.jpg-d43e1bafc196a3aa8aa98b379e497f94.s3tc.ctex"
+path.etc2="res://.godot/imported/lunar_rover_ORM_11bc8f5e-3a5b-49b3-b36e-ccfa28d95a4b.jpg-d43e1bafc196a3aa8aa98b379e497f94.etc2.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "6a8295dce5d98278cad89ff2f6525700"
+}
+
+[deps]
+
+source_file="res://assets/team/models/lunar_rover_ORM_11bc8f5e-3a5b-49b3-b36e-ccfa28d95a4b.jpg"
+dest_files=["res://.godot/imported/lunar_rover_ORM_11bc8f5e-3a5b-49b3-b36e-ccfa28d95a4b.jpg-d43e1bafc196a3aa8aa98b379e497f94.s3tc.ctex", "res://.godot/imported/lunar_rover_ORM_11bc8f5e-3a5b-49b3-b36e-ccfa28d95a4b.jpg-d43e1bafc196a3aa8aa98b379e497f94.etc2.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=1024
+detect_3d/compress_to=0

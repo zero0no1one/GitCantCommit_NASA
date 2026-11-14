@@ -10,15 +10,23 @@ config_version=5
 
 [application]
 
-config/name="New Game Project"
-config/features=PackedStringArray("4.7", "Forward Plus")
+config/name="Sunline"
+config/description="Sunline: a lunar landing game. Plan touchdown by the real Sun, fly the descent and hold the light. NASA Space Apps 2026."
+run/main_scene="res://scenes/title/title.tscn"
+config/features=PackedStringArray("4.7", "GL Compatibility")
 
 [autoload]
 
+Mission="*res://scripts/mission.gd"
+Campaign="*res://scripts/campaign.gd"
+Sfx="*res://scripts/sfx.gd"
+Game="*res://scripts/game.gd"
 _mcp_game_helper="*res://addons/godot_ai/runtime/game_helper.gd"
 
 [display]
 
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
@@ -31,10 +39,17 @@ version_control/autoload_on_startup=true
 
 enabled=PackedStringArray("res://addons/godot_ai/plugin.cfg")
 
+[gui]
+
+theme/custom="res://ui/theme.tres"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
+3d/default_gravity=1.62
 
 [rendering]
 
-rendering_device/driver.windows="d3d12"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

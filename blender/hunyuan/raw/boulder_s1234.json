@@ -1,0 +1,12 @@
+{
+ "asset": "boulder",
+ "input": "blender/references/hy_input_boulder.png",
+ "seconds": 60.3,
+ "model": "tencent/Hunyuan3D-2mini hunyuan3d-dit-v2-mini-turbo",
+ "octree_resolution": 256,
+ "num_inference_steps": 5,
+ "guidance_scale": 5.0,
+ "num_chunks": 8000,
+ "face_count": 0,
+ "seed": 1234
+}

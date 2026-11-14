@@ -2,8 +2,25 @@
 .godot/
 /android/
 
+# Web export output (CI rebuilds it; see .github/workflows/web.yml)
+/build/
+.vercel/
+
 # Downloaded plugin installer archives
 *.zip
 
 # Blender backups
 *.blend1
+
+# Python caches
+__pycache__/
+
+# Regenerable review renders and VFX frames (see blender/README.md)
+assets/previews/
+blender/vfx/frames/
+
+# Raw Hunyuan3D sculpts (55 MB; regenerate from the logged requests with blender/scripts/hunyuan_generate.py)
+blender/hunyuan/raw/*.glb
+
+.vercel
+.env*
