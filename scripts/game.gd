@@ -9,6 +9,7 @@ const SCREENS := {
 	"title": "res://scenes/title/title.tscn",
 	"campaign": "res://scenes/campaign/campaign.tscn",
 	"mission": "res://scenes/mission/mission.tscn",
+	"operations": "res://scenes/operations/operations.tscn",
 }
 
 # Palette: bold arcade sci-fi (shared with web/shell.html)
@@ -90,8 +91,10 @@ func goto(screen: String) -> void:
 
 
 func play_mission(id: String) -> void:
+	if not Campaign.unlocked(id):
+		return
 	mission_id = id
-	goto("mission")
+	goto("operations" if Campaign.by_id[id].get("operations", false) else "mission")
 
 
 func evaluate(site: String, t: int, need_s := Scoring.SAMPLING_S) -> Dictionary:

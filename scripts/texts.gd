@@ -23,7 +23,7 @@ static func site_info(id: String) -> Dictionary:
 static func help() -> String:
 	return ("[b][color=#ffd23f]THE JOB[/color][/b]\nYour rover needs a stretch of unbroken sunlight right after it "
 		+ "lands, usually 6 hours. The [i]whole[/i] disc of the Sun has to stay above the skyline, seen from the "
-		+ "solar panel 1 m above the ground. If any part of it slips behind the terrain, the rover stops.\n\n"
+		+ "reference observer 1 m above the ground. If any part slips behind terrain, the introductory light criterion is not met. Electrical and thermal survival are not assessed by this rule.\n\n"
 		+ "[b][color=#2ef2ff]1. PLAN[/color][/b]  Drag the time dial (or the Sun itself) to pick a touchdown time. "
 		+ "The sun-path ribbon shows the next hours: [color=#ffd23f]gold[/color] is clear, "
 		+ "[color=#ff5a36]red[/color] is blocked. The Sunlight Clock shows how long the light will last.\n"

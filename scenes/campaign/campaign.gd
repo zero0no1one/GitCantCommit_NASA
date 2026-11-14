@@ -122,7 +122,7 @@ func _build_ui() -> void:
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	head.add_child(title)
 	head.add_child(UIKit.stars(1, 1, 24))
-	head.add_child(UIKit.label("%d / %d" % [Campaign.total_stars(), Campaign.missions.size() * 3], 20, Game.SUN))
+	head.add_child(UIKit.label("%d / 3 INTRO STARS" % Campaign.total_stars(), 20, Game.SUN))
 
 	_layout_box = BoxContainer.new()
 	_layout_box.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -151,9 +151,15 @@ func _build_ui() -> void:
 		node.id = m.id
 		node.number = m.number
 		node.stars = Campaign.stars(m.id)
-		node.locked = not Campaign.unlocked(m.id)
+		# Roadmap cards remain inspectable; their launch action is disabled.
+		node.locked = false
 		node.picked.connect(_select)
-		strip.add_child(node)
+		var entry := UIKit.vbox(2)
+		strip.add_child(entry)
+		entry.add_child(node)
+		var select := UIKit.button(m.title, func() -> void: _select(m.id), 16)
+		select.focus_mode = Control.FOCUS_ALL
+		entry.add_child(select)
 		_nodes[m.id] = node
 
 
@@ -197,6 +203,19 @@ func _fill_card(m: Dictionary) -> void:
 	_card_body.add_child(UIKit.label(m.tagline, 17, Game.CYAN, true))
 	var where := " or ".join(m.sites.map(func(s: String) -> String: return Texts.site_info(s).title))
 	_card_body.add_child(UIKit.label(where, 15, Game.MUTED, true))
+	if m.get("operations", false):
+		var roadmap: bool = m.get("roadmap", false)
+		_card_body.add_child(UIKit.label("FUTURE ROADMAP" if roadmap else "EXPLORABLE / ENGINEERING VALIDATION PENDING", 17, Game.CYAN, true))
+		var objective := "Future content; no playable or scored mission yet." if roadmap else ("Six hours of powered work including a sunlight interruption." if m.id == "sunset-operations" else "Separate Earth visibility, station geometry and signal reception. Find a 30-minute downlink within a six-hour plan.")
+		_card_body.add_child(UIKit.label(objective, 17, Game.INK, true))
+		_card_body.add_child(UIKit.label("Training objectives. Unsupported conditions remain unknown; no science stars are awarded.", 16, Game.MUTED, true))
+		var open := UIKit.button("ON THE ROADMAP" if roadmap else "PLAN OPERATIONS", func() -> void: Game.play_mission(m.id), 24, "primary")
+		open.disabled = roadmap
+		open.focus_mode = Control.FOCUS_ALL
+		_card_body.add_child(open)
+		if not roadmap:
+			open.grab_focus()
+		return
 	var goals := UIKit.vbox(6)
 	_card_body.add_child(goals)
 	goals.add_child(_goal("Hold %d h of unbroken sunlight" % int(m.need_s / 3600), true))

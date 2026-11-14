@@ -19,7 +19,7 @@ func _ready() -> void:
 		error = "cannot read " + PATH
 		push_error(error)
 		return
-	missions = parsed.missions
+	missions = Operations.catalog(parsed.missions[0], Mission.data.window)
 	for m: Dictionary in missions:
 		by_id[m.id] = m
 	_cfg.load(SAVE)		# a missing file just means no progress yet
@@ -50,7 +50,7 @@ func total_stars() -> int:
 ## Mission 1 is always open; each later one opens when the one before has at least one star.
 func unlocked(id: String) -> bool:
 	var i := index_of(id)
-	return i == 0 or (i > 0 and stars(missions[i - 1].id) > 0)
+	return i >= 0 and not bool(missions[i].get("roadmap", false))
 
 
 ## First unlocked mission without stars, else the last one played.
@@ -58,7 +58,7 @@ func next_up() -> String:
 	for m: Dictionary in missions:
 		if unlocked(m.id) and stars(m.id) == 0:
 			return m.id
-	return missions[missions.size() - 1].id
+	return missions[0].id
 
 
 func next_after(id: String) -> String:
