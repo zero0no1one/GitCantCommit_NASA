@@ -48,8 +48,8 @@ func _ready() -> void:
 	floor_snap_length = 0.6
 	floor_max_angle = deg_to_rad(42)
 
-	# the teammate's astronaut, rigged to the Sunline skeleton by blender/scripts/rig_team_astronaut.py
-	model = Models.scene("astronaut_team").instantiate()
+	# Shared NASA-inspired EVA styling, preserving the procedural suit's skeletal clips.
+	model = Models.astronaut()
 	add_child(model)
 	SiteWorld.tame_emission(model, 0.7)
 	anim = SiteWorld.find_anim(model)

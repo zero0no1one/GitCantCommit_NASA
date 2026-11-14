@@ -41,12 +41,24 @@ func _ready() -> void:
 	add_child(_music)
 
 
-func play(name: String, pitch := 1.0, volume_db := 0.0) -> void:
-	if muted or not _streams.has(name):
+func _exit_tree() -> void:
+	# Release active playback before the audio server shuts down.
+	for child: Node in get_children():
+		if child is AudioStreamPlayer:
+			var player: AudioStreamPlayer = child as AudioStreamPlayer
+			player.stop()
+			player.stream = null
+	_streams.clear()
+	_loops.clear()
+	_players.clear()
+
+
+func play(sound_name: String, pitch := 1.0, volume_db := 0.0) -> void:
+	if muted or not _streams.has(sound_name):
 		return
 	for p in _players:
 		if not p.playing:
-			p.stream = _streams[name]
+			p.stream = _streams[sound_name]
 			p.pitch_scale = pitch
 			p.volume_db = volume_db
 			p.play()
@@ -54,13 +66,13 @@ func play(name: String, pitch := 1.0, volume_db := 0.0) -> void:
 
 
 ## Start or stop a looping effect ("thrust").
-func loop(name: String, on: bool, volume_db := -4.0) -> void:
-	if not _loops.has(name):
+func loop(sound_name: String, on: bool, volume_db := -4.0) -> void:
+	if not _loops.has(sound_name):
 		var p := AudioStreamPlayer.new()
-		p.stream = _streams[name]
+		p.stream = _streams[sound_name]
 		add_child(p)
-		_loops[name] = p
-	var lp: AudioStreamPlayer = _loops[name]
+		_loops[sound_name] = p
+	var lp: AudioStreamPlayer = _loops[sound_name]
 	lp.volume_db = volume_db
 	if on and not muted and not lp.playing:
 		lp.play()
@@ -68,15 +80,15 @@ func loop(name: String, on: bool, volume_db := -4.0) -> void:
 		lp.stop()
 
 
-func music(name: String) -> void:
-	if name == _music_name:
+func music(sound_name: String) -> void:
+	if sound_name == _music_name:
 		return
-	_music_name = name
+	_music_name = sound_name
 	_music.stop()
-	if name != "" and not muted:
-		var key := "music_" + name
+	if sound_name != "" and not muted:
+		var key := "music_" + sound_name
 		if not _streams.has(key):		# built on first use: a few hundred ms of GDScript
-			_streams[key] = _pad([110.0, 164.8, 220.0, 277.2] if name == "menu" else [98.0, 146.8, 196.0, 233.1], 6.0)
+			_streams[key] = _pad([110.0, 164.8, 220.0, 277.2] if sound_name == "menu" else [98.0, 146.8, 196.0, 233.1], 6.0)
 		_music.stream = _streams[key]
 		_music.play()
 
@@ -124,10 +136,10 @@ func _tone(freqs: Array, dur: float, amp: float, kind: String) -> AudioStreamWAV
 	var n := int(dur * RATE)
 	var s := PackedFloat32Array()
 	s.resize(n)
-	var per := n / freqs.size()
+	var per: int = maxi(1, int(float(n) / freqs.size()))
 	var phase := 0.0
 	for i in n:
-		var k := mini(i / per, freqs.size() - 1)
+		var k: int = mini(int(float(i) / per), freqs.size() - 1)
 		var local := float(i - k * per) / per
 		phase += freqs[k] / RATE
 		var env := (1.0 - local) * minf(1.0, float(i) / 40.0)
@@ -153,7 +165,7 @@ func _alarm() -> AudioStreamWAV:
 	s.resize(n)
 	var phase := 0.0
 	for i in n:
-		var f := 740.0 if (i / (RATE / 5)) % 2 == 0 else 520.0
+		var f := 740.0 if int(float(i) / (RATE / 5.0)) % 2 == 0 else 520.0
 		phase += f / RATE
 		s[i] = _osc("square", phase) * 0.22
 	return _wav(s)
@@ -198,7 +210,7 @@ func _noise_loop(dur: float, amp: float) -> AudioStreamWAV:
 	for i in n:
 		lp = lerpf(lp, rng.randf_range(-1, 1), 0.08)
 		s[i] = lp * amp * 2.5
-	var fade := RATE / 20
+	var fade: int = int(RATE / 20.0)
 	for i in fade:
 		var a := float(i) / fade
 		s[i] = s[i] * a + s[n - fade + i] * (1.0 - a)

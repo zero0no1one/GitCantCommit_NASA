@@ -10,6 +10,11 @@ var _t := 0.0
 var _col: VBoxContainer
 var _logo: Control
 var _sound_btn: Button
+var _astronaut: Node3D
+var _rover: Node3D
+var _astronaut_anim: AnimationPlayer
+var _rover_anim: AnimationPlayer
+var _surveying: bool = false
 
 
 func _ready() -> void:
@@ -47,20 +52,22 @@ func _build_world() -> void:
 	earth.position = Vector3(-2.6, 1.6, -5.0)
 	add_child(earth)
 	# the teammate's rover and astronaut riding along on the title screen
-	var astro: Node3D = Models.scene("astronaut_team").instantiate()
-	astro.scale = Vector3.ONE * 0.16
-	astro.position = _on_moon(-0.22, 0.75)
-	astro.rotation.y = deg_to_rad(-25)
+	var astro: Node3D = Models.astronaut()
+	_astronaut = astro
 	add_child(astro)
 	var aa := SiteWorld.find_anim(astro)
+	_astronaut_anim = aa
 	if aa and aa.has_animation("idle"):
 		aa.get_animation("idle").loop_mode = Animation.LOOP_LINEAR
 		aa.play("idle")
-	var rover: Node3D = Models.team("lunar_rover").instantiate()
-	rover.scale = Vector3.ONE * 0.16
-	rover.position = _on_moon(0.2, 0.62)
-	rover.rotation.y = deg_to_rad(-120)
+	var rover: Node3D = (load("res://assets/models/procedural/rover.glb") as PackedScene).instantiate()
+	_rover = rover
 	add_child(rover)
+	_rover_anim = SiteWorld.find_anim(rover)
+	if _rover_anim and _rover_anim.has_animation("mast_look"):
+		_rover_anim.get_animation("mast_look").loop_mode = Animation.LOOP_LINEAR
+		_rover_anim.speed_scale = 0.45
+		_rover_anim.play("mast_look")
 
 	_lander = Models.scene("lander").instantiate()
 	_lander.scale = Vector3.ONE * 0.09
@@ -75,6 +82,8 @@ func _build_world() -> void:
 
 	var sun := DirectionalLight3D.new()
 	sun.light_energy = 1.6
+	sun.shadow_enabled = true
+	sun.directional_shadow_max_distance = 12.0
 	sun.rotation = Vector3(deg_to_rad(-25), deg_to_rad(60), 0)
 	add_child(sun)
 	var rim := DirectionalLight3D.new()
@@ -97,9 +106,35 @@ func _on_moon(x: float, z: float) -> Vector3:
 	return Vector3(x, c.y + sqrt(maxf(0.0, 6.76 - x * x - dz * dz)), z)
 
 
+## Place the display models tangent to the globe, with their feet/wheels on the surface.
+func _place_surface_model(model: Node3D, x: float, z: float, model_scale: float, yaw: float) -> void:
+	var surface: Vector3 = _on_moon(x, z)
+	var normal: Vector3 = (surface - _moon.position).normalized()
+	var right: Vector3 = Vector3.RIGHT.slide(normal).normalized()
+	var surface_basis: Basis = Basis(right, normal, right.cross(normal))
+	model.transform = Transform3D(surface_basis.rotated(normal, yaw).scaled(Vector3.ONE * model_scale), surface)
+	# Imported models do not all share a bottom-centred origin.
+	var bottom: float = INF
+	for mesh: Node in model.find_children("*", "MeshInstance3D", true, false):
+		var instance: MeshInstance3D = mesh as MeshInstance3D
+		var relative: Transform3D = model.global_transform.affine_inverse() * instance.global_transform
+		var bounds: AABB = relative * instance.get_aabb()
+		bottom = minf(bottom, bounds.position.y)
+	if is_finite(bottom):
+		model.position -= normal * bottom * model_scale
+
+
 func _process(delta: float) -> void:
 	_t += delta
-	_moon.rotate_y(delta * 0.02)
+	# Survey the horizon, then settle back into a breathing idle. No sliding root motion.
+	var survey: bool = fmod(_t, 14.0) >= 8.0
+	if survey != _surveying and _astronaut_anim:
+		_surveying = survey
+		var clip: String = "scan_sweep" if survey else "idle"
+		if _astronaut_anim.has_animation(clip):
+			_astronaut_anim.get_animation(clip).loop_mode = Animation.LOOP_LINEAR
+			_astronaut_anim.speed_scale = 0.65 if survey else 1.0
+			_astronaut_anim.play(clip, 0.65)
 	_lander.position.y = 0.2 + sin(_t * 0.8) * 0.05
 	_lander.rotation = Vector3(sin(_t * 0.6) * 0.08, _t * 0.25, cos(_t * 0.5) * 0.06)
 
@@ -175,6 +210,12 @@ func _layout() -> void:
 	_camera.position = Vector3(0, 0.1, 4.6) if Game.portrait else Vector3(0, 0.35, 3.0)
 	_camera.h_offset = 0.0 if Game.portrait else -0.55
 	_camera.look_at(Vector3(0, -0.15, 0))
+	if Game.portrait:
+		_place_surface_model(_astronaut, -0.38, 0.25, 0.24, deg_to_rad(-15))
+		_place_surface_model(_rover, 0.38, 0.18, 0.18, deg_to_rad(-110))
+	else:
+		_place_surface_model(_astronaut, -0.18, 0.28, 0.27, deg_to_rad(-15))
+		_place_surface_model(_rover, 0.57, 0.12, 0.19, deg_to_rad(-110))
 
 
 func _toggle_sound() -> void:

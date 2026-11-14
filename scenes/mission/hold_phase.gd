@@ -366,7 +366,7 @@ func _build_ui() -> void:
 func _update_hud(done: float) -> void:
 	_bar.value = done
 	_clock_label.text = "%s / %d H   ·   %s" % [Scoring.duration_label(int(done)), int(mission.need_s / 3600),
-		Mission.utc_label(_t)]
+		preload("res://scripts/mission.gd").utc_label(_t)]
 	var frac := world.sun_fraction(_t)
 	var full := Scoring.find(Mission.sites[world.site].intervals.sun_full, int(_t)) >= 0
 	_sun_pill.text = "SUN CLEAR" if full else ("SUN FADING" if frac > 0.0 else "DARK")

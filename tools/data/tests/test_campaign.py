@@ -19,7 +19,9 @@ class Campaign(unittest.TestCase):
         cls.sites = {s['id']: s for s in cls.m['sites']}
 
     def test_bundled_file_is_current(self):
-        fresh = build_campaign.build()        # rebuilds the file; identical apart from the timestamp
+        original = build_campaign.CAMPAIGN_JSON.read_bytes()
+        fresh = build_campaign.build(write=False)
+        self.assertEqual(build_campaign.CAMPAIGN_JSON.read_bytes(), original)
         strip = lambda d: {k: v for k, v in d.items() if k != 'generated_utc'}
         self.assertEqual(strip(fresh), strip(self.c))
 

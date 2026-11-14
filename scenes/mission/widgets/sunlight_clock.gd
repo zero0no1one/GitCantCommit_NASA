@@ -42,11 +42,11 @@ func _draw() -> void:
 	var small := ""
 	if clear_s <= 0:
 		big = "DARK"
-		small = ("SUN IN " + Scoring.duration_label(wait_s)) if wait_s >= 0 else "NO SUN AHEAD"
+		small = ("FULL SUN IN " + Scoring.duration_label(wait_s)) if wait_s >= 0 else "NO FULL SUN AHEAD"
 		col = Game.CORAL
 	else:
 		big = _short(clear_s) + ("+" if open_end else "")
-		small = "OF LIGHT · NEED %dH" % int(need_s / 3600)
+		small = "OF LIGHT · NEED %dH" % int(need_s / 3600.0)
 	draw_string(font, c + Vector2(-r, 6), big, HORIZONTAL_ALIGNMENT_CENTER, r * 2, 30, col)
 	draw_string(font, c + Vector2(-r, 28), small, HORIZONTAL_ALIGNMENT_CENTER, r * 2, 11, Game.MUTED)
 
@@ -54,5 +54,5 @@ func _draw() -> void:
 static func _short(s: int) -> String:
 	var m := int(s / 60.0)
 	if m >= 48 * 60:
-		return "%dD" % (m / 1440)
-	return "%dH%02d" % [m / 60, m % 60]
+		return "%dD" % int(m / 1440.0)
+	return "%dH%02d" % [int(m / 60.0), m % 60]

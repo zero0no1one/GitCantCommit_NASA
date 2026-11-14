@@ -57,7 +57,7 @@ static func next_change(intervals: Array, t: int) -> Dictionary:
 static func duration_label(seconds: int) -> String:
 	var m := int(round(abs(seconds) / 60.0))
 	if m >= 48 * 60:
-		return "%d d %d h" % [m / 1440, (m % 1440) / 60]
+		return "%d d %d h" % [int(m / 1440.0), int((m % 1440) / 60.0)]
 	if m >= 60:
-		return "%d h %02d m" % [m / 60, m % 60]
+		return "%d h %02d m" % [int(m / 60.0), m % 60]
 	return "%d m" % m

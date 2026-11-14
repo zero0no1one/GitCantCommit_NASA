@@ -4,12 +4,12 @@ class_name UIKit
 ## The fonts (Chakra Petch, Russo One) have no ✓ ✗ ★ glyphs: stars and ticks are drawn as shapes here.
 
 
-static func label(text: String, size := 20, color := Color("e9f1ff"), wrap := false) -> Label:
+static func label(text: String, size := 20, color := Color("e9f1ff"), wrap_text: bool = false) -> Label:
 	var l := Label.new()
 	l.text = text
 	l.add_theme_font_size_override("font_size", size)
 	l.add_theme_color_override("font_color", color)
-	if wrap:
+	if wrap_text:
 		l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		l.custom_minimum_size.x = 120
 	return l

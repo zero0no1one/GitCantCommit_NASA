@@ -98,7 +98,7 @@ def bonus_met(m, site, t, r, mission):
     return None                                          # landing bonuses depend on the player, not the data
 
 
-def build():
+def build(*, write=True):
     mission = json.loads(MISSION_JSON.read_text(encoding='utf-8'))
     sites = {s['id']: s for s in mission['sites']}
     w = mission['window']
@@ -148,7 +148,8 @@ def build():
     doc = dict(schema='sunline-campaign/1', generated_utc=dt.datetime.now(dt.timezone.utc).isoformat(timespec='seconds'),
                source='data/mission.json', note='Sampling hours are fictional mission requirements; all sunlight '
                'timing comes from the bundled Horizons + LOLA data.', missions=out)
-    CAMPAIGN_JSON.write_text(json.dumps(doc, indent=1), encoding='utf-8', newline='\n')
+    if write:
+        CAMPAIGN_JSON.write_text(json.dumps(doc, indent=1), encoding='utf-8', newline='\n')
     return doc
 
 

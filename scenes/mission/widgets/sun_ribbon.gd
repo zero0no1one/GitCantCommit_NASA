@@ -77,7 +77,7 @@ func build(world: SiteWorld, touchdown: int, need_s: int) -> void:
 	_labels.clear()
 	# one marker at the end of the block ("+6H"), lit or not by whether the Sun is still clear there
 	var last := pts.size() - 1
-	var l := _label("+%dH" % int(need_s / 3600), Game.LIME if ok[last] else Game.CORAL, 14)
+	var l := _label("+%dH" % int(need_s / 3600.0), Game.LIME if ok[last] else Game.CORAL, 14)
 	l.position = pts[last] + Vector3.UP * width * 2.5
 	_labels.append(l)
 	var tick := MeshInstance3D.new()		# small end cap

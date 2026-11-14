@@ -145,7 +145,7 @@ func _process(delta: float) -> void:
 func _scope_aim() -> void:
 	# aim between the Sun's path over the block and the skyline under it; widen until both fit
 	var need := int(mission.need_s)
-	var mid := t + need / 2
+	var mid: int = t + int(need / 2.0)
 	var az := Mission.sample(world.site, "sun_az", mid)
 	var el := Mission.sample(world.site, "sun_el", mid)
 	var sky := Mission.skyline(world.site, az)

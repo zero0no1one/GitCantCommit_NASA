@@ -65,13 +65,13 @@ func _ready() -> void:
 		UIKit.pop_in(r, delay)
 		UIKit.count_up(vl, val, 0.5, "%+d" if val < 0 else "%d", delay)
 		delay += 0.25
-	var tr := UIKit.hbox(8)
-	v.add_child(tr)
+	var total_row := UIKit.hbox(8)
+	v.add_child(total_row)
 	var tl := UIKit.display("TOTAL", 26, Game.INK)
 	tl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	tr.add_child(tl)
+	total_row.add_child(tl)
 	var tv := UIKit.display("0", 30, Game.SUN)
-	tr.add_child(tv)
+	total_row.add_child(tv)
 	UIKit.count_up(tv, total, 1.0, "%d", delay)
 	v.add_child(UIKit.label("PAR %d   ·   BONUS: %s %s" % [int(mission.par), str(mission.bonus.text),
 		"(MET)" if bonus_met else "(MISSED)"], 14, Game.MUTED, true))
@@ -106,7 +106,7 @@ func _ready() -> void:
 func _story() -> String:
 	var lines := PackedStringArray()
 	var info := Texts.site_info(site)
-	lines.append("[color=#9a9cc9]%s · touchdown %s[/color]" % [info.title, Mission.utc_label(result.touchdown)])
+	lines.append("[color=#9a9cc9]%s · touchdown %s[/color]" % [info.title, preload("res://scripts/mission.gd").utc_label(result.touchdown)])
 	if result.pass:
 		lines.append("The whole Sun stayed above the skyline for all %d hours. Full sunlight lasted %s%s longer." % [
 			int(mission.need_s / 3600), Scoring.duration_label(result.margin_s), " or more" if result.margin_open else ""])

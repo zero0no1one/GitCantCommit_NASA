@@ -29,6 +29,34 @@ static func scene(model: String) -> PackedScene:
 	return load(path(model)) as PackedScene
 
 
+## NASA-inspired EVA appearance on the existing animated, procedural suit.
+## Reference: https://www.nasa.gov/centers-and-facilities/johnson/spacewalk-spacesuit-basics/
+static func astronaut() -> Node3D:
+	var model: Node3D = (load(DIR + "procedural/astronaut.glb") as PackedScene).instantiate()
+	for child: Node in model.find_children("*", "MeshInstance3D", true, false):
+		var mesh: MeshInstance3D = child as MeshInstance3D
+		for surface: int in mesh.mesh.get_surface_count():
+			var source: Material = mesh.get_active_material(surface)
+			if not source is StandardMaterial3D:
+				continue
+			var material: StandardMaterial3D = source.duplicate() as StandardMaterial3D
+			match source.resource_name:
+				"suit_orange", "suit_light_blue", "suit_royal":
+					material.albedo_color = Color("eeeae0")
+					material.metallic = 0.0
+					material.roughness = 0.85
+				"seam_dark_orange":
+					material.albedo_color = Color("a52e36")
+				"suit_navy":
+					material.albedo_color = Color("414852")
+				"visor_black":
+					material.albedo_color = Color("ba8534")
+					material.metallic = 0.35
+					material.roughness = 0.2
+			mesh.set_surface_override_material(surface, material)
+	return model
+
+
 ## Teammate models (assets/team/, made with MINT; see assets/team/README.md): lunar_rover, survey_beacon,
 ## astronaut (static T-pose, no rig yet), sun, earth. Each scene is bottom-aligned (props) or centred (bodies).
 static func team(model: String) -> PackedScene:
