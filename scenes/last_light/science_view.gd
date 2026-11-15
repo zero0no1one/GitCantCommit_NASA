@@ -3,9 +3,9 @@ extends Control
 var host: Node
 var kind := "horizon"
 var dragging := false
-const GOLD := Color("ffd08a")
-const TEAL := Color("8edfd2")
-const RED := Color("ff9c89")
+const GOLD := Color("ffd23f")
+const TEAL := Color("2ef2ff")
+const RED := Color("ff5a36")
 
 func _ready() -> void:
 	clip_contents = true
@@ -26,14 +26,16 @@ func _draw() -> void:
 
 func _background() -> StyleBoxFlat:
 	var style := StyleBoxFlat.new()
-	style.bg_color = Color("15232d")
-	style.set_corner_radius_all(12)
+	style.bg_color = Color("161040")
+	style.border_color = Color("2ef2ff")
+	style.set_border_width_all(2)
+	style.set_corner_radius_all(4)
 	return style
 
 func _map() -> void:
 	label_at("MOON MAP / equirectangular locator", Vector2(12,22), TEAL)
 	var area := Rect2(12,36,size.x-24,size.y-62)
-	draw_rect(area, Color("31434a"))
+	draw_rect(area, Color("242050"))
 	for i in range(1,6):
 		draw_line(Vector2(area.position.x+i*area.size.x/6,area.position.y),Vector2(area.position.x+i*area.size.x/6,area.end.y),Color("4a5e65"))
 	for i in range(1,4):
@@ -63,7 +65,7 @@ func _horizon() -> void:
 		var az := bearing-8+i*.1
 		points.append(project.call(az,host.model.skyline(host.site,az)))
 	points.append(area.end)
-	draw_colored_polygon(points,Color("40515b"))
+	draw_colored_polygon(points,Color("403763"))
 	draw_polyline(PackedVector2Array(points.slice(1,points.size()-1)),Color("9aabb1"),2,true)
 	var level: Vector2 = project.call(bearing,0.)
 	draw_line(Vector2(area.position.x,level.y),Vector2(area.end.x,level.y),Color("81919b"),1)
@@ -86,16 +88,16 @@ func _timeline() -> void:
 	var area := Rect2(16,35,size.x-32,24)
 	var span := float(host.timeline_end-host.timeline_start)
 	var x := func(t: float) -> float: return area.position.x+(t-host.timeline_start)/span*area.size.x
-	draw_rect(area,Color("5c4243"))
+	draw_rect(area,Color("653344"))
 	var record: Dictionary = host.model.records[host.site]
 	for iv: Array in record.sun_any:
 		var a := maxf(iv[0],host.timeline_start)
 		var b := minf(float(iv[1])+1,host.timeline_end)
-		if b > a: draw_rect(Rect2(x.call(a),area.position.y,x.call(b)-x.call(a),24),Color("8d7756"))
+		if b > a: draw_rect(Rect2(x.call(a),area.position.y,x.call(b)-x.call(a),24),Color("a5743e"))
 	for iv: Array in record.variants[0].full:
 		var a := maxf(iv[0],host.timeline_start)
 		var b := minf(float(iv[1])+1,host.timeline_end)
-		if b > a: draw_rect(Rect2(x.call(a),area.position.y,x.call(b)-x.call(a),24),Color("457d72"))
+		if b > a: draw_rect(Rect2(x.call(a),area.position.y,x.call(b)-x.call(a),24),Color("257b83"))
 	for event: Dictionary in record.events:
 		if event.unix < host.timeline_start or event.unix > host.timeline_end: continue
 		var xx: float = x.call(event.unix)
@@ -106,8 +108,7 @@ func _timeline() -> void:
 	draw_rect(Rect2(xx,68,maxf(1,setup_end-xx),25),TEAL)
 	draw_rect(Rect2(setup_end,68,maxf(1,finish-setup_end),25),GOLD)
 	draw_rect(Rect2(xx,65,maxf(1,finish-xx),31),Color.WHITE,false,2)
-	label_at("SETUP",Vector2(xx,110),TEAL,11)
-	label_at("OBSERVE",Vector2(setup_end+4,110),GOLD,11)
+	label_at("SETUP  /  OBSERVATION",Vector2(xx,110),GOLD,11)
 	label_at(host.utc(host.timeline_start),Vector2(12,size.y-24),Color("c8d7e2"),12)
 	var end_text: String = host.utc(host.timeline_end)
 	label_at(end_text,Vector2(maxf(12,size.x-200),size.y-24),Color("c8d7e2"),12)

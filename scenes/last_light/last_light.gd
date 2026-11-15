@@ -4,8 +4,8 @@ const Model := preload("res://scripts/last_light_model.gd")
 const ScienceView := preload("res://scenes/last_light/science_view.gd")
 const Astronaut := preload("res://scenes/mission/astronaut.gd")
 @export var log_path := "user://last_light_log.json"
-const CREAM := Color("ffd08a")
-const TEAL := Color("8edfd2")
+const CREAM := Color("ffd23f")
+const TEAL := Color("2ef2ff")
 var model: RefCounted
 var site := ""
 var start := 0
@@ -62,7 +62,7 @@ func _ready() -> void:
 	page = UIKit.full_rect(Control.new())
 	layer.add_child(page)
 	var bg := UIKit.full_rect(ColorRect.new())
-	bg.color = Color("0c1720")
+	bg.color = Game.SPACE
 	page.add_child(bg)
 	var margin := UIKit.full_rect(UIKit.margin(20))
 	page.add_child(margin)
@@ -123,7 +123,7 @@ func plan_screen() -> void:
 	if is_instance_valid(inspector): inspector.frozen = true
 	var top := actions()
 	top.add_child(button("MISSIONS",func() -> void: Game.goto("campaign")))
-	top.add_child(UIKit.label("02 / LAST LIGHT OPERATIONS",24,CREAM))
+	top.add_child(UIKit.display("MISSION 2 / LAST LIGHT OPERATIONS",24,CREAM))
 	top.add_child(button("MISSION LOG (%d)" % log_entries.size(),show_log))
 	text("Complete setup and observation in continuous full sunlight. Leave as much verified time before the first interruption as you can.",TEAL,17)
 	text("DISPATCH / %s. A ridge has interrupted full sunlight. Inspect the red transition, then revise the schedule or compare an alternative. Coverage: %s through %s." % [site_name(site),utc(model.records[site].coverage[0]),utc(model.records[site].coverage[1])],Color("aabcc7"),13)
@@ -211,6 +211,7 @@ func plan_screen() -> void:
 	reduced.toggled.connect(func(value: bool) -> void: reduced_motion = value)
 	bottom.add_child(reduced)
 	var submit := button("SUBMIT OPERATIONS PLAN",commit)
+	submit.theme_type_variation = &"PrimaryButton"
 	bottom.add_child(submit)
 	bottom.add_child(button("HINT",func() -> void:
 		readout.text += "\nHINT: Fit the whole bracket inside one teal interval, before the red loss line. Leave time for uncertainty. A hold with evidence is valid."))
