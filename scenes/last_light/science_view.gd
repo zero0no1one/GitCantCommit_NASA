@@ -88,8 +88,12 @@ func _timeline() -> void:
 	var area := Rect2(16,35,size.x-32,24)
 	var span := float(host.timeline_end-host.timeline_start)
 	var x := func(t: float) -> float: return area.position.x+(t-host.timeline_start)/span*area.size.x
-	draw_rect(area,Color("653344"))
+	draw_rect(area,Color("5a5d70")) # Uncovered: unknown, never blocked.
 	var record: Dictionary = host.model.records[host.site]
+	var covered_start := maxf(record.coverage[0], host.timeline_start)
+	var covered_end := minf(record.coverage[1], host.timeline_end)
+	if covered_end > covered_start:
+		draw_rect(Rect2(x.call(covered_start),area.position.y,x.call(covered_end)-x.call(covered_start),24),Color("653344"))
 	for iv: Array in record.sun_any:
 		var a := maxf(iv[0],host.timeline_start)
 		var b := minf(float(iv[1])+1,host.timeline_end)
@@ -112,7 +116,7 @@ func _timeline() -> void:
 	label_at(host.utc(host.timeline_start),Vector2(12,size.y-24),Color("c8d7e2"),12)
 	var end_text: String = host.utc(host.timeline_end)
 	label_at(end_text,Vector2(maxf(12,size.x-200),size.y-24),Color("c8d7e2"),12)
-	label_at("FULL: teal   PARTIAL: amber   BLOCKED: rose   |   Red line: first full-sun loss",Vector2(12,size.y-8),Color("98adb8"),11)
+	label_at("FULL: teal   PARTIAL: amber   BLOCKED: rose   UNKNOWN: grey   |   Red: full-sun loss",Vector2(12,size.y-8),Color("98adb8"),11)
 
 func _gui_input(event: InputEvent) -> void:
 	if kind != "timeline": return

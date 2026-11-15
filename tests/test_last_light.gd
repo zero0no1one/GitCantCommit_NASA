@@ -74,6 +74,15 @@ func flow_checks() -> bool:
 	scene.set_compare_mode(0)
 	scene.set_start(scene.start+60)
 	check(scene.cards[0].start == scene.cards[1].start and scene.cards[0].site != scene.cards[1].site,"Site comparison holds UTC")
+	scene.switch_site()
+	check(scene.cards[0].site != scene.cards[1].site and scene.cards[0].start == scene.cards[1].start,"Switching the active site keeps a distinct comparison at fixed UTC")
+	var before_landing: Dictionary = scene.result.duplicate(true)
+	scene.practice_descent()
+	await process_frame
+	check(scene.phase == "descent" and is_instance_valid(scene.descent),"Landing practice starts")
+	scene.descent._auto_land()
+	await process_frame
+	check(scene.phase == "plan" and scene.result == before_landing,"Landing returns to the unchanged scientific plan")
 	scene.set_compare_mode(1)
 	scene.switch_site()
 	check(scene.cards[0].site == scene.cards[1].site,"Date comparison holds site")

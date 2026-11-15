@@ -3,6 +3,7 @@ extends Node3D
 const Model := preload("res://scripts/last_light_model.gd")
 const ScienceView := preload("res://scenes/last_light/science_view.gd")
 const Astronaut := preload("res://scenes/mission/astronaut.gd")
+const DescentPhase := preload("res://scenes/mission/descent_phase.gd")
 @export var log_path := "user://last_light_log.json"
 const CREAM := Color("ffd23f")
 const TEAL := Color("2ef2ff")
@@ -40,6 +41,8 @@ var replay_label: Label
 var replay_bar: ProgressBar
 var instrument: MeshInstance3D
 var surface_generation := 0
+var paused := false
+var descent: Node
 
 func utc(t: float) -> String:
 	return Time.get_datetime_string_from_unix_time(int(t),true).replace("T"," ") + " UTC"
@@ -186,6 +189,7 @@ func plan_screen() -> void:
 	edit.add_child(button("+15 MIN",func() -> void: set_start(start+900)))
 	edit.add_child(button("INSPECT LIMIT",inspect_limit))
 	edit.add_child(button("SURFACE VIEW",func() -> void: open_surface(false)))
+	edit.add_child(button("PRACTICE LANDING",practice_descent))
 	var transitions := OptionButton.new()
 	transition_menu = transitions
 	transitions.item_selected.connect(func(index: int) -> void:
@@ -235,7 +239,39 @@ func switch_site() -> void:
 	site = "sl3" if site == "apollo-11" else "apollo-11"
 	cards[active] = model.snapshot(site,start)
 	if compare_mode == 1: cards[1-active] = model.snapshot(site,int(cards[1-active].start))
+	else: cards[1-active] = model.snapshot("sl3" if site == "apollo-11" else "apollo-11",start)
 	refresh()
+
+func practice_descent() -> void:
+	if model.geometry(site,start).is_empty():
+		readout.text = "Landing practice needs a date within the bundled site coverage. The uncovered plan remains available for assessment."
+		return
+	phase = "descent"
+	paused = false
+	page.hide()
+	if is_instance_valid(world):
+		remove_child(world)
+		world.queue_free()
+	world = SiteWorld.new(site)
+	add_child(world)
+	world.set_time(start)
+	descent = DescentPhase.new()
+	descent.setup(self,world)
+	descent.landed.connect(_descent_finished)
+	add_child(descent)
+
+func _descent_finished(_landing: Dictionary) -> void:
+	# The landing is an arcade visualization; the scientific observer stays fixed.
+	if is_instance_valid(descent): descent.queue_free()
+	if is_instance_valid(world): world.queue_free()
+	paused = false
+	plan_screen()
+
+func toggle_pause() -> void:
+	paused = not paused
+
+func popup(_message: String, _color: Color) -> void:
+	pass
 
 func restore_card(index: int) -> void:
 	active = index
