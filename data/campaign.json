@@ -1,0 +1,316 @@
+{
+ "schema": "sunline-campaign/1",
+ "generated_utc": "2026-11-14T10:48:11+00:00",
+ "source": "data/mission.json",
+ "note": "Sampling hours are fictional mission requirements; all sunlight timing comes from the bundled Horizons + LOLA data.",
+ "missions": [
+  {
+   "id": "first-light",
+   "number": 1,
+   "title": "First Light",
+   "tagline": "Catch the sunrise at Tranquility Base.",
+   "brief": "Night is ending at Tranquility Base. Drag the Sun along its path and find the moment it clears the horizon. Your rover only needs 2 hours of light for this test run.",
+   "sites": [
+    "apollo-11"
+   ],
+   "need_s": 7200,
+   "window": {
+    "start": 1835510400,
+    "end": 1835611200,
+    "step": 600
+   },
+   "fixed_touchdown": false,
+   "bonus": {
+    "type": "touchdown_before",
+    "text": "Land within 3 hours of sunrise",
+    "unix": 1835560800
+   },
+   "par": 1800,
+   "stats": {
+    "apollo-11": {
+     "touchdowns": 169,
+     "passes": 102,
+     "robust_passes": 101,
+     "robust_fails": 66,
+     "first_pass": 1835550600,
+     "last_pass": 1835611200,
+     "best_margin_s": 1262836,
+     "bonus_touchdowns": 18,
+     "example_pass": 1835551200,
+     "example_fail": 1835510400
+    }
+   }
+  },
+  {
+   "id": "before-sunset",
+   "number": 2,
+   "title": "Before Sunset",
+   "tagline": "Two weeks of daylight are almost over.",
+   "brief": "The long lunar day at Tranquility is ending. Land early enough that the Sun is still up for the whole 6-hour sample. Too late and the rover freezes in the dark.",
+   "sites": [
+    "apollo-11"
+   ],
+   "need_s": 21600,
+   "window": {
+    "start": 1836691200,
+    "end": 1836820800,
+    "step": 600
+   },
+   "fixed_touchdown": false,
+   "bonus": {
+    "type": "margin",
+    "hours": 12,
+    "text": "Keep 12 h of sunlight in reserve"
+   },
+   "par": 2600,
+   "stats": {
+    "apollo-11": {
+     "touchdowns": 217,
+     "passes": 180,
+     "robust_passes": 179,
+     "robust_fails": 36,
+     "first_pass": 1836691200,
+     "last_pass": 1836798600,
+     "best_margin_s": 107836,
+     "bonus_touchdowns": 108,
+     "example_pass": 1836691200,
+     "example_fail": 1836799800
+    }
+   }
+  },
+  {
+   "id": "ridge-runner",
+   "number": 3,
+   "title": "Ridge Runner",
+   "tagline": "At the pole, the Sun skims the mountains.",
+   "brief": "Near the south pole the Sun never climbs high. It circles the horizon and slips behind distant peaks. Find the gap where it stays clear of the ridges for 6 hours.",
+   "sites": [
+    "sl3"
+   ],
+   "need_s": 21600,
+   "window": {
+    "start": 1836129600,
+    "end": 1836259200,
+    "step": 600
+   },
+   "fixed_touchdown": false,
+   "bonus": {
+    "type": "margin",
+    "hours": 6,
+    "text": "Keep 6 h of sunlight in reserve"
+   },
+   "par": 2800,
+   "stats": {
+    "sl3": {
+     "touchdowns": 217,
+     "passes": 74,
+     "robust_passes": 52,
+     "robust_fails": 122,
+     "first_pass": 1836180000,
+     "last_pass": 1836223800,
+     "best_margin_s": 43849,
+     "bonus_touchdowns": 38,
+     "example_pass": 1836190200,
+     "example_fail": 1836129600
+    }
+   }
+  },
+  {
+   "id": "two-sites",
+   "number": 4,
+   "title": "Two Sites, One Clock",
+   "tagline": "Same time. Which site has the Sun?",
+   "brief": "The launch is fixed: touchdown time cannot move. You can still choose where to land. One site has 6 hours of sunlight ahead, the other is in darkness.",
+   "sites": [
+    "apollo-11",
+    "sl3"
+   ],
+   "need_s": 21600,
+   "window": {
+    "start": 1835552400,
+    "end": 1835552400,
+    "step": 600
+   },
+   "fixed_touchdown": true,
+   "bonus": {
+    "type": "landing",
+    "offset_m": 6,
+    "text": "Land within 6 m of the target"
+   },
+   "par": 2800,
+   "stats": {
+    "apollo-11": {
+     "touchdowns": 1,
+     "passes": 1,
+     "robust_passes": 1,
+     "robust_fails": 0,
+     "first_pass": 1835552400,
+     "last_pass": 1835552400,
+     "best_margin_s": 1246636,
+     "bonus_touchdowns": null,
+     "example_pass": 1835552400,
+     "example_fail": null
+    },
+    "sl3": {
+     "touchdowns": 1,
+     "passes": 0,
+     "robust_passes": 0,
+     "robust_fails": 1,
+     "first_pass": null,
+     "last_pass": null,
+     "best_margin_s": null,
+     "bonus_touchdowns": null,
+     "example_pass": null,
+     "example_fail": 1835552400
+    }
+   }
+  },
+  {
+   "id": "ten-minutes",
+   "number": 5,
+   "title": "Ten Minutes Matter",
+   "tagline": "A narrow gap at the ridge.",
+   "brief": "The Sun is about to climb out from behind a peak. Land too early and the panel sits in shadow. Land right after it clears for the best run.",
+   "sites": [
+    "sl3"
+   ],
+   "need_s": 21600,
+   "window": {
+    "start": 1836442800,
+    "end": 1836478800,
+    "step": 600
+   },
+   "fixed_touchdown": false,
+   "bonus": {
+    "type": "touchdown_before",
+    "text": "Land within about an hour of first light",
+    "unix": 1836462600
+   },
+   "par": 3000,
+   "stats": {
+    "sl3": {
+     "touchdowns": 61,
+     "passes": 34,
+     "robust_passes": 31,
+     "robust_fails": 24,
+     "first_pass": 1836459000,
+     "last_pass": 1836478800,
+     "best_margin_s": 104623,
+     "bonus_touchdowns": 7,
+     "example_pass": 1836460800,
+     "example_fail": 1836442800
+    }
+   }
+  },
+  {
+   "id": "earthrise",
+   "number": 6,
+   "title": "Earthrise",
+   "tagline": "Land with the Earth in view.",
+   "brief": "From the pole, Earth hides behind the horizon for weeks. It is about to rise over the ridge. Land in sunlight with Earth in the sky. (Earth in view is geometry only: no radio claim.)",
+   "sites": [
+    "sl3"
+   ],
+   "need_s": 21600,
+   "window": {
+    "start": 1834704000,
+    "end": 1834876800,
+    "step": 600
+   },
+   "fixed_touchdown": false,
+   "bonus": {
+    "type": "earth_up",
+    "text": "Earth above the skyline at touchdown"
+   },
+   "par": 3000,
+   "stats": {
+    "sl3": {
+     "touchdowns": 289,
+     "passes": 289,
+     "robust_passes": 289,
+     "robust_fails": 0,
+     "first_pass": 1834704000,
+     "last_pass": 1834876800,
+     "best_margin_s": 613748,
+     "bonus_touchdowns": 117,
+     "example_pass": 1834704000,
+     "example_fail": null
+    }
+   }
+  },
+  {
+   "id": "long-day",
+   "number": 7,
+   "title": "Long Day",
+   "tagline": "Squeeze out every hour of light.",
+   "brief": "Short windows and one long one. Any 6 hours will do the job; a full day of spare sunlight earns the bonus.",
+   "sites": [
+    "sl3"
+   ],
+   "need_s": 21600,
+   "window": {
+    "start": 1836324000,
+    "end": 1836583200,
+    "step": 600
+   },
+   "fixed_touchdown": false,
+   "bonus": {
+    "type": "margin",
+    "hours": 24,
+    "text": "Keep 24 h of sunlight in reserve"
+   },
+   "par": 3200,
+   "stats": {
+    "sl3": {
+     "touchdowns": 433,
+     "passes": 203,
+     "robust_passes": 166,
+     "robust_fails": 182,
+     "first_pass": 1836366000,
+     "last_pass": 1836563400,
+     "best_margin_s": 104623,
+     "bonus_touchdowns": 31,
+     "example_pass": 1836460800,
+     "example_fail": 1836324000
+    }
+   }
+  },
+  {
+   "id": "endurance",
+   "number": 8,
+   "title": "Endurance",
+   "tagline": "8 hours. One window.",
+   "brief": "The upgraded drill needs 8 hours of unbroken sunlight (a made-up requirement, like the 6 h one). There is exactly one window that fits.",
+   "sites": [
+    "sl3"
+   ],
+   "need_s": 28800,
+   "window": {
+    "start": 1836669600,
+    "end": 1836820800,
+    "step": 600
+   },
+   "fixed_touchdown": false,
+   "bonus": {
+    "type": "landing",
+    "offset_m": 4,
+    "text": "Land within 4 m of the target"
+   },
+   "par": 3500,
+   "stats": {
+    "sl3": {
+     "touchdowns": 253,
+     "passes": 21,
+     "robust_passes": 5,
+     "robust_fails": 216,
+     "first_pass": 1836700200,
+     "last_pass": 1836712200,
+     "best_margin_s": 12404,
+     "bonus_touchdowns": null,
+     "example_pass": 1836703200,
+     "example_fail": 1836669600
+    }
+   }
+  }
+ ]
+}

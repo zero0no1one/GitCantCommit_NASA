@@ -1,0 +1,5 @@
+# Sunline data pipeline (Python 3.12+; tested on 3.14)
+numpy>=2.0
+scipy>=1.13
+rasterio>=1.4
+requests>=2.31

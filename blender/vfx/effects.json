@@ -1,0 +1,71 @@
+{
+ "footstep_dust": {
+  "n": 48,
+  "life": 1.2,
+  "speed": [
+   0.4,
+   1.2
+  ],
+  "elev": [
+   15,
+   55
+  ],
+  "az": [
+   0,
+   90
+  ],
+  "size": [
+   0.006,
+   0.02
+  ],
+  "width": 1.6,
+  "origin_r": 0.08,
+  "use": "astronaut footfalls (lunar_lope contact frames, walk_slow steps)"
+ },
+ "wheel_dust": {
+  "n": 64,
+  "life": 1.6,
+  "speed": [
+   0.5,
+   1.5
+  ],
+  "elev": [
+   20,
+   60
+  ],
+  "az": [
+   180,
+   25
+  ],
+  "size": [
+   0.006,
+   0.018
+  ],
+  "width": 2.6,
+  "origin_r": 0.06,
+  "use": "each rover wheel while drive_loop plays; spray goes backward"
+ },
+ "touchdown_spray": {
+  "n": 220,
+  "life": 1.0,
+  "speed": [
+   5.0,
+   20.0
+  ],
+  "elev": [
+   2,
+   12
+  ],
+  "az": [
+   0,
+   180
+  ],
+  "size": [
+   0.01,
+   0.05
+  ],
+  "width": 12.0,
+  "origin_r": 0.6,
+  "use": "lander touchdown: engine plume sweeps grains outward, low and fast; most leave the frame (real ranges reach tens of metres)"
+ }
+}

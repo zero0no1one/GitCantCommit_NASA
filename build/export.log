@@ -1,0 +1,116 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+Found a repository at C:/dev/godot/new-game-project/.git/.
+Selected repository path: C:/dev/godot/new-game-project/.git/.
+GitPlugin: Loaded system CA certificates
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+MCP | plugin disabled in headless mode
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+MCP | export: stripping autoload/_mcp_game_helper from the exported pack (restored in the editor after export)
+[   0% ] [90m[1msavepack[22m | Started Packing (102 steps)[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://scripts/mission.gdc[39m[0m
+[   3% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/astronaut.glb-5a934fffe18ddb51e140914d116adfc3.scn[39m[0m
+[   3% ] [90m[1msavepack[22m | Storing File: res://assets/models/astronaut.glb.import[39m[0m
+[   5% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/regolith_albedo.png-2f1acfd1a0749b76850250b4e24b7890.ctex[39m[0m
+[   5% ] [90m[1msavepack[22m | Storing File: res://assets/textures/regolith_albedo.png.import[39m[0m
+[   8% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/regolith_normal.png-f7d19e41b36cce8a12a8230d83ff81fc.ctex[39m[0m
+[   8% ] [90m[1msavepack[22m | Storing File: res://assets/textures/regolith_normal.png.import[39m[0m
+[  10% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/rock_detail_normal.png-0079b9499576d6c9b9113e2d757553b3.ctex[39m[0m
+[  10% ] [90m[1msavepack[22m | Storing File: res://assets/textures/rock_detail_normal.png.import[39m[0m
+[  13% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/suit_fabric_normal.png-b49e830d90c1aa0d84f4751cbd40a9fb.ctex[39m[0m
+[  13% ] [90m[1msavepack[22m | Storing File: res://assets/textures/suit_fabric_normal.png.import[39m[0m
+[  15% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/footstep_dust_4x4.png-c1fda687670c191f88e57df29e12bfe5.ctex[39m[0m
+[  15% ] [90m[1msavepack[22m | Storing File: res://assets/vfx/footstep_dust_4x4.png.import[39m[0m
+[  18% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/touchdown_spray_4x4.png-9925a73e5b0796afaea57d2f00235c70.ctex[39m[0m
+[  18% ] [90m[1msavepack[22m | Storing File: res://assets/vfx/touchdown_spray_4x4.png.import[39m[0m
+[  20% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/visor_glint.png-25b0d66ce9cf9d0378276facb9cd6220.ctex[39m[0m
+[  20% ] [90m[1msavepack[22m | Storing File: res://assets/vfx/visor_glint.png.import[39m[0m
+[  22% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/wheel_dust_4x4.png-be6fc59ced420ac102ea992a49594019.ctex[39m[0m
+[  22% ] [90m[1msavepack[22m | Storing File: res://assets/vfx/wheel_dust_4x4.png.import[39m[0m
+[  25% ] [90m[1msavepack[22m | Storing File: res://data/mission.json[39m[0m
+[  27% ] [90m[1msavepack[22m | Storing File: res://scripts/main.gdc[39m[0m
+[  30% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-3ad5c15c4f3250da0cc7c1af1770d85f-main.scn[39m[0m
+[  32% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/mli_crinkle_normal.png-c3a119354dee13224fd473ec38e78b68.ctex[39m[0m
+[  32% ] [90m[1msavepack[22m | Storing File: res://assets/textures/mli_crinkle_normal.png.import[39m[0m
+[  34% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/earth_limb.png-8588cf8ab955154702a4ea988edeb058.ctex[39m[0m
+[  34% ] [90m[1msavepack[22m | Storing File: res://assets/textures/earth_limb.png.import[39m[0m
+[  36% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/vfx_meshes.glb-e14279b86cc571db3fb8e9302064c146.scn[39m[0m
+[  36% ] [90m[1msavepack[22m | Storing File: res://assets/models/vfx_meshes.glb.import[39m[0m
+[  39% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/terrain_sl3_regolith_normal.png-84dbde631e449c95f3af43bfb9f3ea1a.s3tc.ctex[39m[0m
+[  39% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/terrain_sl3_regolith_normal.png-84dbde631e449c95f3af43bfb9f3ea1a.etc2.ctex[39m[0m
+[  39% ] [90m[1msavepack[22m | Storing File: res://assets/models/terrain_sl3_regolith_normal.png.import[39m[0m
+[  41% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/terrain_sl3_regolith_albedo.png-5d4022ab9125586f7824edffad62ac6c.s3tc.ctex[39m[0m
+[  41% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/terrain_sl3_regolith_albedo.png-5d4022ab9125586f7824edffad62ac6c.etc2.ctex[39m[0m
+[  41% ] [90m[1msavepack[22m | Storing File: res://assets/models/terrain_sl3_regolith_albedo.png.import[39m[0m
+[  43% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/terrain_sl3.glb-3b44661c5df8b06d116e0ed24f1128c4.scn[39m[0m
+[  43% ] [90m[1msavepack[22m | Storing File: res://assets/models/terrain_sl3.glb.import[39m[0m
+[  46% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/terrain_apollo-11_regolith_normal.png-2e8557d09a7f4260f22f367c79a99398.s3tc.ctex[39m[0m
+[  46% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/terrain_apollo-11_regolith_normal.png-2e8557d09a7f4260f22f367c79a99398.etc2.ctex[39m[0m
+[  46% ] [90m[1msavepack[22m | Storing File: res://assets/models/terrain_apollo-11_regolith_normal.png.import[39m[0m
+[  48% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/terrain_apollo-11_regolith_albedo.png-5c701d8f48d6deaaa43e11a503bfd0c9.s3tc.ctex[39m[0m
+[  48% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/terrain_apollo-11_regolith_albedo.png-5c701d8f48d6deaaa43e11a503bfd0c9.etc2.ctex[39m[0m
+[  48% ] [90m[1msavepack[22m | Storing File: res://assets/models/terrain_apollo-11_regolith_albedo.png.import[39m[0m
+[  51% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/terrain_apollo-11.glb-26eeb137b49942004fb125495af8a7da.scn[39m[0m
+[  51% ] [90m[1msavepack[22m | Storing File: res://assets/models/terrain_apollo-11.glb.import[39m[0m
+[  53% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/sun_disc.glb-bfc16d8c20b0c97abeba77b5126ac62a.scn[39m[0m
+[  53% ] [90m[1msavepack[22m | Storing File: res://assets/models/sun_disc.glb.import[39m[0m
+[  56% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/site_pin.glb-9b6f7cad760ad47b7f7679d5148cdaf5.scn[39m[0m
+[  56% ] [90m[1msavepack[22m | Storing File: res://assets/models/site_pin.glb.import[39m[0m
+[  58% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/scanner.glb-a1a49ab600289fcb4594e166726d8bd2.scn[39m[0m
+[  58% ] [90m[1msavepack[22m | Storing File: res://assets/models/scanner.glb.import[39m[0m
+[  60% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/rover_mli_crinkle_normal.png-c03698c10a27f9ed8bdc8967b4f98eae.s3tc.ctex[39m[0m
+[  60% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/rover_mli_crinkle_normal.png-c03698c10a27f9ed8bdc8967b4f98eae.etc2.ctex[39m[0m
+[  60% ] [90m[1msavepack[22m | Storing File: res://assets/models/rover_mli_crinkle_normal.png.import[39m[0m
+[  63% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/rover.glb-ea72d4027696c73b489113f258091b2a.scn[39m[0m
+[  63% ] [90m[1msavepack[22m | Storing File: res://assets/models/rover.glb.import[39m[0m
+[  65% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/rocks_rock_detail_normal.png-0dab42d87403248754a58fb606d7bfc9.s3tc.ctex[39m[0m
+[  65% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/rocks_rock_detail_normal.png-0dab42d87403248754a58fb606d7bfc9.etc2.ctex[39m[0m
+[  65% ] [90m[1msavepack[22m | Storing File: res://assets/models/rocks_rock_detail_normal.png.import[39m[0m
+[  67% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/rocks.glb-fd97abb033bbc3c4b4dc53848385b4c8.scn[39m[0m
+[  67% ] [90m[1msavepack[22m | Storing File: res://assets/models/rocks.glb.import[39m[0m
+[  69% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/moon_globe_moon_normal_1024.jpg-3acd2b7b96c207d0a07637b7e9692d77.s3tc.ctex[39m[0m
+[  69% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/moon_globe_moon_normal_1024.jpg-3acd2b7b96c207d0a07637b7e9692d77.etc2.ctex[39m[0m
+[  69% ] [90m[1msavepack[22m | Storing File: res://assets/models/moon_globe_moon_normal_1024.jpg.import[39m[0m
+[  72% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/moon_globe_moon_color_1024.jpg-f8bbd3332cd21d4d2995ef3a4c49fbfe.s3tc.ctex[39m[0m
+[  72% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/moon_globe_moon_color_1024.jpg-f8bbd3332cd21d4d2995ef3a4c49fbfe.etc2.ctex[39m[0m
+[  72% ] [90m[1msavepack[22m | Storing File: res://assets/models/moon_globe_moon_color_1024.jpg.import[39m[0m
+[  74% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/moon_globe.glb-ad80dc3171d2d82e7e53be1f43129f83.scn[39m[0m
+[  74% ] [90m[1msavepack[22m | Storing File: res://assets/models/moon_globe.glb.import[39m[0m
+[  77% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/lander_lander_normal.jpg-2d5c47942ac285e02cd6a9dbc3c4ab76.s3tc.ctex[39m[0m
+[  77% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/lander_lander_normal.jpg-2d5c47942ac285e02cd6a9dbc3c4ab76.etc2.ctex[39m[0m
+[  77% ] [90m[1msavepack[22m | Storing File: res://assets/models/lander_lander_normal.jpg.import[39m[0m
+[  79% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/lander_lander_color.jpg-45ac0963263f511a8319c76941da908f.s3tc.ctex[39m[0m
+[  79% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/lander_lander_color.jpg-45ac0963263f511a8319c76941da908f.etc2.ctex[39m[0m
+[  79% ] [90m[1msavepack[22m | Storing File: res://assets/models/lander_lander_color.jpg.import[39m[0m
+[  81% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/lander.glb-062d967278b84f5f265a62be81f65ed3.scn[39m[0m
+[  81% ] [90m[1msavepack[22m | Storing File: res://assets/models/lander.glb.import[39m[0m
+[  84% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/fp_rig.glb-81b54157351e7bd77666271baf7a9240.scn[39m[0m
+[  84% ] [90m[1msavepack[22m | Storing File: res://assets/models/fp_rig.glb.import[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/earth_earth_limb.png-7d8262435d856037c120949a6570ea26.s3tc.ctex[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/earth_earth_limb.png-7d8262435d856037c120949a6570ea26.etc2.ctex[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://assets/models/earth_earth_limb.png.import[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/earth_earth_color_1024.jpg-a0b15abe1b7eca1ee870b4df080e0e4d.s3tc.ctex[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/earth_earth_color_1024.jpg-a0b15abe1b7eca1ee870b4df080e0e4d.etc2.ctex[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://assets/models/earth_earth_color_1024.jpg.import[39m[0m
+[  91% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/earth.glb-fddc2739cf536429ea47d5af9c032939.scn[39m[0m
+[  91% ] [90m[1msavepack[22m | Storing File: res://assets/models/earth.glb.import[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/beacon.glb-3513a65128c3782a8d43b86437e287f9.scn[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://assets/models/beacon.glb.import[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/astronaut_suit_fabric_normal.png-50234818b4c2bc1755e5105de5632cec.s3tc.ctex[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/astronaut_suit_fabric_normal.png-50234818b4c2bc1755e5105de5632cec.etc2.ctex[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://assets/models/astronaut_suit_fabric_normal.png.import[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scripts/mission.gd.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scripts/main.gd.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scenes/main.tscn.remap[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://.godot/global_script_class_cache.cfg[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://.godot/uid_cache.bin[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://project.binary[39m[0m
+[92m[ DONE ][39m [1msavepack[22m
+[0m

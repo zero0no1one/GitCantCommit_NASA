@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="PackedScene" path="../models/survey_beacon.glb" id="1"]
+
+[node name="SurveyBeacon" type="Node3D"]
+metadata/description = "Fictional MINT visual prop. Chosen display height 1.4 m; not a terrain or illumination sensor model."
+
+[node name="Visual" parent="." instance=ExtResource("1")]
+position = Vector3(0, 0.7, 0)
+scale = Vector3(1.40274, 1.40274, 1.40274)

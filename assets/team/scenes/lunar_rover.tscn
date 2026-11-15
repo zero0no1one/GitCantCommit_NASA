@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="PackedScene" path="../models/lunar_rover.glb" id="1"]
+
+[node name="LunarRover" type="Node3D"]
+metadata/description = "Fictional MINT visual prop. Chosen display height 1.2 m; no equipment performance model."
+
+[node name="Visual" parent="." instance=ExtResource("1")]
+position = Vector3(0, 0.6, 0)
+scale = Vector3(1.53217, 1.53217, 1.53217)
