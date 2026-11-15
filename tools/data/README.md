@@ -1,4 +1,4 @@
-# Sunline data pipeline
+# Moonward data pipeline
 
 Builds `data/mission.json`, the dataset bundled with the game. The game makes no live NASA requests; every number it shows comes from this file.
 

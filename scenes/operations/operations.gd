@@ -65,7 +65,7 @@ func _build_ui() -> void:
 	var top := UIKit.hbox(12)
 	col.add_child(top)
 	top.add_child(_button("MAP" if Game.return_to == "map" else "MISSIONS", func() -> void: Game.goto(Game.return_to)))
-	var heading := "MOONWARD / COMPARE SITES" if Game.return_to == "map" else "FIRST LIGHT / " + str(Campaign.by_id[Game.mission_id].title).to_upper()
+	var heading := "MOONWARD / COMPARE SITES" if Game.return_to == "map" else "MOONWARD / " + str(Campaign.by_id[Game.mission_id].title).to_upper()
 	var title := UIKit.label(heading, 23, Game.SUN, true)
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	top.add_child(title)

@@ -1,4 +1,4 @@
-# Sunline data validation
+# Moonward data validation
 
 ## Moonward exploration audit — 2026-11-15
 

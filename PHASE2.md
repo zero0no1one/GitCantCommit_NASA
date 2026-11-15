@@ -1,10 +1,10 @@
-# First Light: Phase 2 implementation status
+# Moonward: legacy Phase 2 implementation status
 
 Navigator is integrated into Missions 2 and 3 through COMPARE and REVIEW actions in the existing operations HUD. The original title/campaign design remains. Shared site/date options, immutable session briefs, source evidence and preview gates reuse the current UI styling and existing inspection/replay flow. Original-model covered six-hour plans can run the lessons; other comparison intervals and exploration previews receive unknown mission assessments. New exploration packs remain unverified. See `NAVIGATOR.md` for checks and outstanding science gates. Existing mission IDs and save identity remain unchanged.
 
 Status: playable evidence-gated foundation; scientific completion criteria are not met.
 
-The active project is `GitCantCommit_NASA` (Godot application name: Sunline). Its runtime mission catalog now presents Science Outpost, Sunset Operations, Earth Link, and the non-playable Polar Ice Scout roadmap card. The generated eight-mission arcade dataset remains intact for regression checks; existing introductory save identity is retained.
+The active project is `GitCantCommit_NASA` (Godot application name: Moonward). Its runtime mission catalog presents Science Outpost, Last Light Operations, Earth Link, and the non-playable Polar Ice Scout roadmap card. Last Light Operations supersedes the campaign's Sunset Operations flow; see `LAST_LIGHT_VALIDATION.md`. The legacy six-hour comparison flow described below remains available from the Moon map and for Earth Link. The generated eight-mission arcade dataset remains intact for regression checks; existing introductory save identity is retained.
 
 ## Implemented
 

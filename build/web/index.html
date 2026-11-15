@@ -3,9 +3,12 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, viewport-fit=cover">
-		<meta name="description" content="Sunline: choose a lunar landing site and touchdown time that give your rover six hours of full sunlight. Built for NASA Space Apps 2026 with JPL Horizons and LOLA data.">
+		<meta name="description" content="Moonward — Mission Control Adventure. Plan lunar surface work, compare sites and sunlight windows, and make a call you can defend. NASA Space Apps 2026, using JPL Horizons and LOLA data.">
+		<meta property="og:title" content="Moonward — Mission Control Adventure">
+		<meta property="og:description" content="Plan the light. Read the sky. Make the call. Compare lunar sites and sunlight windows with JPL Horizons and LOLA data.">
+		<meta property="og:type" content="website">
 		<meta name="theme-color" content="#05060a">
-		<title>Moonward</title>
+		<title>Moonward — Mission Control Adventure</title>
 		<style>
 :root {
 	--void: #05060a;
@@ -143,12 +146,12 @@ body {
 		</canvas>
 
 		<noscript>
-			Sunline needs JavaScript and WebGL 2 to run.
+			Moonward needs JavaScript and WebGL 2 to run.
 		</noscript>
 
 		<div id="status">
-			<h1 id="title">SUN<span>LINE</span></h1>
-			<p id="tagline">Six hours of sunlight. Choose where and when to land.</p>
+			<h1 id="title">MOON<span>WARD</span></h1>
+			<p id="tagline">Mission Control Adventure<br>Plan the light. Read the sky. Make the call.</p>
 			<div id="bar" class="indeterminate"><div id="bar-fill"></div></div>
 			<div id="progress-text">Loading…</div>
 			<div id="notice" role="alert"></div>
@@ -160,7 +163,7 @@ body {
 
 		<script src="index.js"></script>
 		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":false,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":38146284,"index.wasm":39514754},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":false,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":38146268,"index.wasm":39514754},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
 const GODOT_THREADS_ENABLED = false;
 const engine = new Engine(GODOT_CONFIG);
 
@@ -188,7 +191,7 @@ const engine = new Engine(GODOT_CONFIG);
 	function fail(err) {
 		console.error(err);
 		const msg = err instanceof Error ? err.message : (typeof err === 'string' ? err : 'An unknown error occurred.');
-		showNotice('Sunline could not start.', msg.split('\n').concat(['Try reloading the page, or a current Chrome, Edge, Firefox or Safari.']));
+		showNotice('Moonward could not start.', msg.split('\n').concat(['Try reloading the page, or a current Chrome, Edge, Firefox or Safari.']));
 	}
 
 	function hasWebGL2() {
@@ -202,7 +205,7 @@ const engine = new Engine(GODOT_CONFIG);
 
 	if (!hasWebGL2()) {
 		showNotice('WebGL 2 is not available.', [
-			'Sunline draws its 3D Moon with WebGL 2, which this browser or device has turned off or does not support.',
+			'Moonward draws its 3D Moon with WebGL 2, which this browser or device has turned off or does not support.',
 			'Turn on hardware acceleration in your browser settings, or open the link in a current Chrome, Edge, Firefox or Safari.',
 		]);
 		return;
@@ -210,7 +213,7 @@ const engine = new Engine(GODOT_CONFIG);
 
 	const missing = Engine.getMissingFeatures({ threads: GODOT_THREADS_ENABLED });
 	if (missing.length !== 0) {
-		showNotice('This browser is missing features Sunline needs:', missing);
+		showNotice('This browser is missing features Moonward needs:', missing);
 		return;
 	}
 

@@ -1,10 +1,10 @@
 # Moonward — credits, data sources and licences
 
-Moonward is a NASA Space Apps Challenge 2026 entry (Lunar Landing Site Navigator) by team GitCantCommit.
+Moonward — Mission Control Adventure is a NASA Space Apps Challenge 2026 entry (Lunar Landing Site Navigator) by team GitCantCommit.
 It started as *Sunline*; some code and file names still use that name.
 
 ## 1. Data behind the game's results
-Bundled in `data/mission.json` (the validated study sites) and `data/exploration/*.json` (provisional previews).
+Bundled in `data/mission.json` (the original modeled study sites), `data/last_light.json` (Last Light Operations and evaluated sensitivity variants), and `data/exploration/*.json` (provisional previews). Last Light provenance and remaining scientific limits are recorded in `LAST_LIGHT_VALIDATION.md`.
 Every sunlight and Earth-visibility result in the game is computed from these.
 
 | Data | Product | Use in the game | Reference |

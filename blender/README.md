@@ -1,4 +1,4 @@
-# Sunline 3D assets (Blender first)
+# Moonward 3D assets (Blender first)
 
 Every 3D asset is modelled, rigged, animated and given its preliminary VFX in Blender, then exported to `assets/models/*.glb` for Godot. Each asset is built by one script, so re-running the script rebuilds that asset exactly. Godot ignores this folder (`.gdignore`).
 

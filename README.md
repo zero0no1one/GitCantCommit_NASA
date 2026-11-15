@@ -1,4 +1,4 @@
-# Moonward (Godot)
+# Moonward — Mission Control Adventure
 
 Startup opens the Moon map; Training Missions opens the campaign and mission screens. This repository uses Godot 4.7.2 and bundled JSON, with no runtime NASA requests or login.
 

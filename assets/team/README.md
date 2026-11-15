@@ -1,4 +1,4 @@
-# First Light — MINT equipment
+# Moonward — MINT equipment
 
 Generated 2026-11-14 using MINT MCP.
 

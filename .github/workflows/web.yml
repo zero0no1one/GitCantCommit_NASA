@@ -1,4 +1,4 @@
-# Builds the Sunline web export with headless Godot and deploys it to Vercel.
+# Builds the Moonward web export with headless Godot and deploys it to Vercel.
 #
 # Needs three repository secrets (Settings -> Secrets and variables -> Actions):
 #   VERCEL_TOKEN       a Vercel access token (vercel.com/account/tokens)
@@ -74,7 +74,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: sunline-web
+          name: moonward-web
           path: build/web
           retention-days: 14
 
@@ -89,7 +89,7 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
         with:
-          name: sunline-web
+          name: moonward-web
           path: web
 
       - name: Deploy to Vercel (production)
@@ -98,4 +98,4 @@ jobs:
 
       - name: Vercel secrets missing
         if: env.VERCEL_TOKEN == ''
-        run: echo "::warning::VERCEL_TOKEN is not set; skipped the deploy. The build is in the sunline-web artifact."
+        run: echo "::warning::VERCEL_TOKEN is not set; skipped the deploy. The build is in the moonward-web artifact."

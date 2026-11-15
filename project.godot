@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Moonward"
-config/description="Moonward: plan lunar surface work by the real Sun, Earth and skyline, and make a call you can defend. NASA Space Apps 2026."
+config/description="Moonward — Mission Control Adventure. Plan lunar surface work by the real Sun, Earth and skyline, and make a call you can defend. NASA Space Apps 2026."
 run/main_scene="res://scenes/map/map.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 

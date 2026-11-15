@@ -1,5 +1,5 @@
 extends Node3D
-## Title screen: the lander drifting over the Moon, the SUNLINE logo and the main menu.
+## Title screen: the lander drifting over the Moon, the MOONWARD logo and the main menu.
 
 const Starfield := preload("res://scenes/common/starfield.gd")
 
@@ -161,14 +161,14 @@ func _build_ui() -> void:
 	logo.custom_minimum_size = Vector2(0, 112)
 	logo.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_col.add_child(logo)
-	var back := UIKit.display("SUNLINE", 96, Game.MAGENTA)
+	var back := UIKit.display("MOONWARD", 96, Game.MAGENTA)
 	back.position = Vector2(6, 6)
 	logo.add_child(back)
-	var front := UIKit.display("SUNLINE", 96, Game.SUN)
+	var front := UIKit.display("MOONWARD", 96, Game.SUN)
 	logo.add_child(front)
-	var tag := UIKit.label("HOLD THE LIGHT  ·  A LUNAR LANDING GAME", 18, Game.CYAN)
+	var tag := UIKit.label("MISSION CONTROL ADVENTURE", 18, Game.CYAN)
 	_col.add_child(tag)
-	_col.add_child(UIKit.label("Real Sun. Real terrain. Six hours to hold the light.", 17, Game.MUTED, true))
+	_col.add_child(UIKit.label("Plan the light. Read the sky. Make the call.", 17, Game.MUTED, true))
 
 	_col.add_child(UIKit.spacer())
 
