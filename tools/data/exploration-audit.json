@@ -1,0 +1,229 @@
+{
+  "scope": "Offline structure, finite samples, skyline length and ordered interval bounds only. Independent ephemeris/terrain/event validation NOT completed.",
+  "records": [
+    {
+      "window": "artemis-iv-era",
+      "site": "apollo-17",
+      "samples_per_body": 4321,
+      "sha256": "14c55987e51029aaaf45e60742982045f521f4bc6841beeb8d94230a346bc34c",
+      "generator_reported_cross_check_not_rerun": {
+        "sun_el_max_diff_deg": 0.0009264194983060747,
+        "sun_az_max_diff_deg_below_80": 0.0006764329465624996,
+        "earth_el_max_diff_deg": 0.005130240145490461,
+        "earth_az_max_diff_deg": 0.006346466435019238,
+        "samples": 721
+      },
+      "scientifically_validated": false
+    },
+    {
+      "window": "artemis-iv-era",
+      "site": "site04",
+      "samples_per_body": 4321,
+      "sha256": "14c55987e51029aaaf45e60742982045f521f4bc6841beeb8d94230a346bc34c",
+      "generator_reported_cross_check_not_rerun": {
+        "sun_el_max_diff_deg": 0.000763406980298087,
+        "sun_az_max_diff_deg_below_80": 0.00027917289509105103,
+        "earth_el_max_diff_deg": 0.0006333551038877339,
+        "earth_az_max_diff_deg": 0.006030567838905654,
+        "samples": 721
+      },
+      "scientifically_validated": false
+    },
+    {
+      "window": "artemis-iv-era",
+      "site": "site07",
+      "samples_per_body": 4321,
+      "sha256": "14c55987e51029aaaf45e60742982045f521f4bc6841beeb8d94230a346bc34c",
+      "generator_reported_cross_check_not_rerun": {
+        "sun_el_max_diff_deg": 0.0007658965232686388,
+        "sun_az_max_diff_deg_below_80": 0.00028439250718292897,
+        "earth_el_max_diff_deg": 0.000585141491736163,
+        "earth_az_max_diff_deg": 0.0060231420722516305,
+        "samples": 721
+      },
+      "scientifically_validated": false
+    },
+    {
+      "window": "artemis-iv-era",
+      "site": "site11",
+      "samples_per_body": 4321,
+      "sha256": "14c55987e51029aaaf45e60742982045f521f4bc6841beeb8d94230a346bc34c",
+      "generator_reported_cross_check_not_rerun": {
+        "sun_el_max_diff_deg": 0.0007647124404585037,
+        "sun_az_max_diff_deg_below_80": 0.00028442447094789713,
+        "earth_el_max_diff_deg": 0.0006877963167286616,
+        "earth_az_max_diff_deg": 0.006050644789183934,
+        "samples": 721
+      },
+      "scientifically_validated": false
+    },
+    {
+      "window": "artemis-v-era",
+      "site": "apollo-11",
+      "samples_per_body": 4321,
+      "sha256": "6b15dd513ae310fd093e8f792eb5951ec4badfc051b097f3ca69849b21543270",
+      "generator_reported_cross_check_not_rerun": {
+        "sun_el_max_diff_deg": 0.0009460798735354548,
+        "sun_az_max_diff_deg_below_80": 0.011882753403796187,
+        "earth_el_max_diff_deg": 0.005685408097605205,
+        "earth_az_max_diff_deg": 0.004197375712976736,
+        "samples": 721
+      },
+      "scientifically_validated": false
+    },
+    {
+      "window": "artemis-v-era",
+      "site": "apollo-17",
+      "samples_per_body": 4321,
+      "sha256": "6b15dd513ae310fd093e8f792eb5951ec4badfc051b097f3ca69849b21543270",
+      "generator_reported_cross_check_not_rerun": {
+        "sun_el_max_diff_deg": 0.0009229270789212762,
+        "sun_az_max_diff_deg_below_80": 0.0007079874356179516,
+        "earth_el_max_diff_deg": 0.005039615997326052,
+        "earth_az_max_diff_deg": 0.006844669182299867,
+        "samples": 721
+      },
+      "scientifically_validated": false
+    },
+    {
+      "window": "artemis-v-era",
+      "site": "sl3",
+      "samples_per_body": 4321,
+      "sha256": "6b15dd513ae310fd093e8f792eb5951ec4badfc051b097f3ca69849b21543270",
+      "generator_reported_cross_check_not_rerun": {
+        "sun_el_max_diff_deg": 0.0007681502233043425,
+        "sun_az_max_diff_deg_below_80": 0.0002764865268716221,
+        "earth_el_max_diff_deg": 0.0006054615466153379,
+        "earth_az_max_diff_deg": 0.005996943874635008,
+        "samples": 721
+      },
+      "scientifically_validated": false
+    },
+    {
+      "window": "artemis-v-era",
+      "site": "site04",
+      "samples_per_body": 4321,
+      "sha256": "6b15dd513ae310fd093e8f792eb5951ec4badfc051b097f3ca69849b21543270",
+      "generator_reported_cross_check_not_rerun": {
+        "sun_el_max_diff_deg": 0.0007630506917737367,
+        "sun_az_max_diff_deg_below_80": 0.00027375638273952063,
+        "earth_el_max_diff_deg": 0.0006688193672967913,
+        "earth_az_max_diff_deg": 0.006002164612880279,
+        "samples": 721
+      },
+      "scientifically_validated": false
+    },
+    {
+      "window": "artemis-v-era",
+      "site": "site07",
+      "samples_per_body": 4321,
+      "sha256": "6b15dd513ae310fd093e8f792eb5951ec4badfc051b097f3ca69849b21543270",
+      "generator_reported_cross_check_not_rerun": {
+        "sun_el_max_diff_deg": 0.0007691626942313845,
+        "sun_az_max_diff_deg_below_80": 0.00028504429172926393,
+        "earth_el_max_diff_deg": 0.0007369289228957854,
+        "earth_az_max_diff_deg": 0.0059972656821969395,
+        "samples": 721
+      },
+      "scientifically_validated": false
+    },
+    {
+      "window": "artemis-v-era",
+      "site": "site11",
+      "samples_per_body": 4321,
+      "sha256": "6b15dd513ae310fd093e8f792eb5951ec4badfc051b097f3ca69849b21543270",
+      "generator_reported_cross_check_not_rerun": {
+        "sun_el_max_diff_deg": 0.0007721559485104335,
+        "sun_az_max_diff_deg_below_80": 0.0002810156518933127,
+        "earth_el_max_diff_deg": 0.0006693638856125617,
+        "earth_az_max_diff_deg": 0.005993156919601006,
+        "samples": 721
+      },
+      "scientifically_validated": false
+    },
+    {
+      "window": "viper-era",
+      "site": "apollo-11",
+      "samples_per_body": 4321,
+      "sha256": "4c8c77c1968105e7b5d2cf4ff90bc31097442f0f75f574d44e1af0d73047fd49",
+      "generator_reported_cross_check_not_rerun": {
+        "sun_el_max_diff_deg": 0.0009143546421643833,
+        "sun_az_max_diff_deg_below_80": 0.017014859794272752,
+        "earth_el_max_diff_deg": 0.005792763175563209,
+        "earth_az_max_diff_deg": 0.005525893071535393,
+        "samples": 721
+      },
+      "scientifically_validated": false
+    },
+    {
+      "window": "viper-era",
+      "site": "apollo-17",
+      "samples_per_body": 4321,
+      "sha256": "4c8c77c1968105e7b5d2cf4ff90bc31097442f0f75f574d44e1af0d73047fd49",
+      "generator_reported_cross_check_not_rerun": {
+        "sun_el_max_diff_deg": 0.0009060386694432765,
+        "sun_az_max_diff_deg_below_80": 0.000679988044566926,
+        "earth_el_max_diff_deg": 0.004932098272320218,
+        "earth_az_max_diff_deg": 0.007014187849790687,
+        "samples": 721
+      },
+      "scientifically_validated": false
+    },
+    {
+      "window": "viper-era",
+      "site": "sl3",
+      "samples_per_body": 4321,
+      "sha256": "4c8c77c1968105e7b5d2cf4ff90bc31097442f0f75f574d44e1af0d73047fd49",
+      "generator_reported_cross_check_not_rerun": {
+        "sun_el_max_diff_deg": 0.0007750672521376067,
+        "sun_az_max_diff_deg_below_80": 0.000282311460694018,
+        "earth_el_max_diff_deg": 0.0006315003504804295,
+        "earth_az_max_diff_deg": 0.006040524231963218,
+        "samples": 721
+      },
+      "scientifically_validated": false
+    },
+    {
+      "window": "viper-era",
+      "site": "site04",
+      "samples_per_body": 4321,
+      "sha256": "4c8c77c1968105e7b5d2cf4ff90bc31097442f0f75f574d44e1af0d73047fd49",
+      "generator_reported_cross_check_not_rerun": {
+        "sun_el_max_diff_deg": 0.0007700300315185427,
+        "sun_az_max_diff_deg_below_80": 0.00027750244177582317,
+        "earth_el_max_diff_deg": 0.0006570274208108628,
+        "earth_az_max_diff_deg": 0.00606457119016568,
+        "samples": 721
+      },
+      "scientifically_validated": false
+    },
+    {
+      "window": "viper-era",
+      "site": "site07",
+      "samples_per_body": 4321,
+      "sha256": "4c8c77c1968105e7b5d2cf4ff90bc31097442f0f75f574d44e1af0d73047fd49",
+      "generator_reported_cross_check_not_rerun": {
+        "sun_el_max_diff_deg": 0.0007696283950330285,
+        "sun_az_max_diff_deg_below_80": 0.00027973301234851533,
+        "earth_el_max_diff_deg": 0.0006722139885972922,
+        "earth_az_max_diff_deg": 0.0060619312948517745,
+        "samples": 721
+      },
+      "scientifically_validated": false
+    },
+    {
+      "window": "viper-era",
+      "site": "site11",
+      "samples_per_body": 4321,
+      "sha256": "4c8c77c1968105e7b5d2cf4ff90bc31097442f0f75f574d44e1af0d73047fd49",
+      "generator_reported_cross_check_not_rerun": {
+        "sun_el_max_diff_deg": 0.000767724064280717,
+        "sun_az_max_diff_deg_below_80": 0.00027247787451756267,
+        "earth_el_max_diff_deg": 0.0007014938520404357,
+        "earth_az_max_diff_deg": 0.006029282473889452,
+        "samples": 721
+      },
+      "scientifically_validated": false
+    }
+  ]
+}

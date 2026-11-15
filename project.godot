@@ -18,6 +18,7 @@ config/features=PackedStringArray("4.7", "GL Compatibility")
 [autoload]
 
 Mission="*res://scripts/mission.gd"
+Navigator="*res://scripts/navigator_state.gd"
 Campaign="*res://scripts/campaign.gd"
 Sfx="*res://scripts/sfx.gd"
 Game="*res://scripts/game.gd"

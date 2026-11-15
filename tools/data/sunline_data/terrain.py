@@ -95,9 +95,12 @@ def source_at(lat, lon):
     """Name of the finest terrain product used at a site, for the dataset's metadata."""
     if lat < -79.5:
         x, y = _polar_xy(np.array([lat]), np.array([lon]))
+        matched_patch = None
         for pid, sw_x, sw_y, step, patch in _patches():
             if 0 <= (y[0]-sw_y)/step <= patch.shape[0]-1 and 0 <= (x[0]-sw_x)/step <= patch.shape[1]-1:
-                return f'PGDA LOLA 80 m south polar mosaic (patch {pid}), then 640 m mosaic, then LDEM_4'
+                matched_patch = pid
+        if matched_patch is not None:
+            return f'PGDA LOLA 80 m south polar mosaic (patch {matched_patch}), then 640 m mosaic, then LDEM_4'
         return 'PGDA LOLA 640 m south polar mosaic, then LDEM_4'
     tq = _tranquility()
     if tq is not None:

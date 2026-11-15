@@ -2,6 +2,8 @@ extends Node3D
 ## The preview is presentation only. Its debrief always evaluates the saved plan.
 
 const Astronaut := preload("res://scenes/mission/astronaut.gd")
+const MissionNavigatorUI := preload("res://scenes/operations/mission_navigator.gd")
+var navigator_ui: RefCounted
 var site := "apollo-11"
 var start := 0
 var at := 0.0
@@ -25,12 +27,26 @@ func _ready() -> void:
 		Game.mission_id = "sunset-operations"
 	# Near the bundled equatorial sunset, useful for the electrical-endurance lesson.
 	start = floori((float(Mission.sites[site].intervals.sun_full[0][1]) - 10800.0) / 600.0) * 600
+	if not Navigator.mission_plan_initialized:
+		Navigator.set_card(0, "artemis-iv-era/" + site, start, Operations.DURATION_S)
+		Navigator.mission_plan_initialized = true
+	var card: Dictionary = Navigator.cards[Navigator.active_index]
+	var initial_key := str(card.key)
+	start = int(card.start)
+	var record: Dictionary = Navigator.records[card.key]
+	if record.verified:
+		site = str(record.site.id)
 	at = start
+	navigator_ui = MissionNavigatorUI.new(self)
 	for activity in ["Observation request", "Telemetry request", "Standby request"]:
 		schedule.append({"activity": activity, "duration_s": 7200})
 	_build_ui()
 	Game.orientation_changed.connect(_fit_camera)
 	_change_site(site)
+	# A preview must not borrow the last original site's surface or sky.
+	if not record.verified:
+		Navigator.cards[Navigator.active_index].key = initial_key
+		world.visible = false
 	_plan()
 	Sfx.music("mission")
 
@@ -50,7 +66,7 @@ func _build_ui() -> void:
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	top.add_child(title)
 	top.add_child(_button("VIEW", _cycle_view))
-	col.add_child(UIKit.label("Hypothetical 2028 training / Surveyor robotic reference / validation pending", 16, Game.CYAN, true))
+	col.add_child(UIKit.label("Exploration-era planning scenario / Surveyor robotic reference / validation pending", 16, Game.CYAN, true))
 	col.add_child(UIKit.spacer())
 	var panel := UIKit.panel("hud")
 	col.add_child(panel)
@@ -90,11 +106,13 @@ func _plan() -> void:
 		inspector.frozen = true
 	_clear()
 	_text("1 / CHOOSE SITE AND UTC START", Game.SUN)
-	var actions := UIKit.hbox(12)
+	var actions := HFlowContainer.new()
 	body.add_child(actions)
 	actions.add_child(_button("INSPECT", _inspect))
 	actions.add_child(_button("PREVIEW / 720x", _preview))
 	actions.add_child(_button("ASSESS", _assess))
+	actions.add_child(_button("COMPARE", func() -> void: navigator_ui.compare()))
+	actions.add_child(_button("REVIEW", func() -> void: navigator_ui.review()))
 	var sites := UIKit.hbox(12)
 	body.add_child(sites)
 	for sid: String in Mission.site_ids:
@@ -102,18 +120,22 @@ func _plan() -> void:
 		sites.add_child(b)
 		if sid == site:
 			b.grab_focus()
+	_text("Navigator plan: " + str(Navigator.cards[Navigator.active_index].key), Game.CYAN)
 	clock_label = _text(Mission.utc_label(start))
 	slider = HSlider.new()
-	slider.min_value = Mission.data.window.start_unix
-	slider.max_value = int(Mission.data.window.end_unix) - Operations.DURATION_S
+	var selected_samples: Dictionary = Navigator.records[Navigator.cards[Navigator.active_index].key].site.samples
+	slider.min_value = selected_samples.start_unix
+	slider.max_value = int(selected_samples.start_unix) + (int(selected_samples.count)-1)*int(selected_samples.step_s)
 	slider.step = 600
 	slider.value = start
 	body.add_child(slider)
 	slider.value_changed.connect(func(value: float) -> void:
 		start = int(value)
 		at = value
+		navigator_ui.sync_plan()
 		_refresh())
-	_text("Bundled coverage: " + Mission.utc_label(Mission.data.window.start_unix) + " to " + Mission.utc_label(Mission.data.window.end_unix), Game.MUTED)
+	_text("Bundled coverage: " + Mission.utc_label(selected_samples.start_unix) + " to " + Mission.utc_label(int(selected_samples.start_unix)+(int(selected_samples.count)-1)*int(selected_samples.step_s)), Game.MUTED)
+	_text("The operating-sequence lesson uses a six-hour training interval. Compare accepts 10 minutes to 24 hours; other durations and preview records receive an unknown mission assessment.", Game.MUTED)
 	readout = _text("")
 	_text("2 / REQUEST AN OPERATING SEQUENCE (three two-hour blocks)", Game.SUN)
 	_text("Activities below are planning requests, not verified Surveyor hardware modes. No low-power mode or free panel rotation is offered.", Game.MUTED)
@@ -138,6 +160,7 @@ func _plan() -> void:
 	_refresh()
 
 func _change_site(sid: String) -> void:
+	Navigator.set_card(Navigator.active_index, "artemis-iv-era/" + sid, start, int(Navigator.cards[Navigator.active_index].duration))
 	_generation += 1
 	var generation := _generation
 	site = sid
@@ -201,6 +224,8 @@ func _marker(text: String, position_: Vector3, color: Color) -> void:
 	world.add_child(label)
 
 func _cycle_view() -> void:
+	if not navigator_ui.surface_available():
+		return
 	if not is_instance_valid(inspector):
 		return
 	view_index = (view_index + 1) % 3
@@ -216,6 +241,9 @@ func _fit_camera(portrait: bool) -> void:
 		camera.keep_aspect = Camera3D.KEEP_WIDTH if portrait else Camera3D.KEEP_HEIGHT
 
 func _inspect() -> void:
+	if not navigator_ui.surface_available():
+		navigator_ui.review()
+		return
 	phase = "inspect"
 	_clear()
 	_text("SURFACE INSPECTION / SURVEY, THIRD PERSON, FIRST PERSON", Game.SUN)
@@ -229,9 +257,16 @@ func _inspect() -> void:
 	_refresh()
 
 func _refresh() -> void:
+	if navigator_ui != null and not navigator_ui.surface_available():
+		if is_instance_valid(world):
+			world.visible = false
+		if is_instance_valid(readout):
+			readout.text = navigator_ui.card_text(Navigator.cards[Navigator.active_index]) + "\nSurface inspection unavailable for this site/window."
+		return
 	if not is_instance_valid(world):
 		return
 	world.set_time(at)
+	world.visible = true
 	if is_instance_valid(clock_label):
 		clock_label.text = Mission.utc_label(at)
 	if not is_instance_valid(readout):
@@ -250,10 +285,14 @@ func _refresh() -> void:
 		visibility, earth_az, earth_el, obstruction, maxf(0, start + Operations.DURATION_S - at) / 3600.0, sensitivity, schedule[block].activity]
 
 func _preview() -> void:
+	if not navigator_ui.training_available():
+		_assess()
+		return
 	phase = "preview"
 	at = start
 	_tick = -1
 	result = Operations.assess(Mission.data, site, start, Game.mission_id, schedule)
+	result["navigator_plan"] = Navigator.cards[Navigator.active_index].duplicate(true)
 	_clear()
 	_text("OPERATIONS PREVIEW / ACCELERATED TIME 720x", Game.SUN)
 	_text("Six simulated hours in 30 seconds. Watching and skipping use the same saved plan and assessment.")
@@ -279,7 +318,7 @@ func _process(delta: float) -> void:
 		_debrief()
 
 func _assess() -> void:
-	result = Operations.assess(Mission.data, site, start, Game.mission_id, schedule)
+	result = navigator_ui.mission_assessment()
 	_debrief()
 
 func _debrief() -> void:
@@ -301,6 +340,7 @@ func _debrief() -> void:
 	_text("Unknown is useful information, not a penalty. This assessment establishes neither lunar-night thermal survival nor a certified landing recommendation. Earth Link never books DSN service.", Game.MUTED)
 	body.add_child(_button("REVISE PLAN", _plan))
 	body.add_child(_button("SOURCES AND ASSUMPTIONS", _evidence))
+	body.add_child(_button("REVIEW COMPARISON", func() -> void: navigator_ui.review()))
 	(body.get_child(body.get_child_count() - 2) as Button).grab_focus()
 
 func _evidence() -> void:
@@ -310,6 +350,10 @@ func _evidence() -> void:
 		inspector.frozen = true
 	_clear()
 	_text("EVIDENCE / CONFIGURATION READINESS", Game.SUN)
+	if not navigator_ui.surface_available():
+		_text(navigator_ui.card_text(Navigator.cards[Navigator.active_index]))
+		body.add_child(_button("BACK TO PLAN", _plan))
+		return
 	_text("Available: bundled topocentric Sun/Earth geometry, terrain skyline and illumination intervals. No Surveyor 1 flight power or radio configuration is validated here. Initial battery energy and temperature, charging limits, equipment loads, panel pointing, antenna pattern and reception thresholds are UNKNOWN.")
 	var s: Dictionary = Mission.sites[site]
 	_text("Fixed observer: %.5f deg latitude, %.5f deg east longitude; %.1f m above terrain.\nTerrain product: %s\nSampling resolution is not positional accuracy. Near-field decoration, equipment shadows and inspection lighting are not measurements." % [s.lat, s.lon, s.panel_height_m, str(s.terrain_source)])

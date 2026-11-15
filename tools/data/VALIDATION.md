@@ -1,5 +1,9 @@
 # Sunline data validation
 
+## Moonward exploration audit — 2026-11-15
+
+`audit_exploration.py` completed structural checks for all 16 provisional records: 4,321 finite samples per body, 600-second cadence, finite 3,600-ray skylines and ordered interval bounds. `exploration-audit.json` records source hashes and the generator-reported cross-check values. These cross-check calculations were not independently rerun in this audit. All exploration `validated` flags remain false. Apollo 17 finer terrain acquisition, terrain registration/overlap review, height/resolution sensitivity, independent event validation and new-pack golden parity remain incomplete. Existing Python scientific suite: 24 tests passed using local Python 3.14; this does not certify the new packs. See `../../NAVIGATOR.md` for implementation scope.
+
 Generated 2026-11-13 16:06 UTC by `tools/data/validate.py` from `data/mission.json` (window 2028-02-18T00:00:00Z → 2028-03-19T00:00:00Z).
 
 ## 1. Sun and Earth positions vs an independent Horizons query
