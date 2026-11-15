@@ -50,6 +50,7 @@ Assessment requires the entire consecutive setup/observation interval to fit in 
 - Scene/resource checker: 512 files, zero errors or warnings.
 - Web export completed. An initial editor import reported a GitPlugin DLL-copy error; a subsequent export completed without that error. The editor VCS extension is not used by the web runtime.
 - Chrome/WebGL playthrough on localhost: Moon map → Training Missions → Mission 2 → planner; restored the generated alternative, edited the bracket with pointer/arrow controls and entered UTC, submitted the Meets/bonus plan, completed the replay, and filed the brief with Enter. No browser page exceptions or Godot script errors were observed. Chrome reported its usual audio-start user-gesture notice.
+- Chrome/WebGL landing-practice check: Moon map → Training Missions → Mission 2 → Practice Landing → Auto-land returned to the planner with the original site, UTC start, and illumination verdict intact. No browser page exceptions or Godot script errors were observed. Manual piloting and touch controls were not exercised in this check.
 - Headless teardown reports two ObjectDB instances for the new flow and nine in the existing Science Outpost check; the rendered Last Light run exits without this warning.
 
 ## Remaining scientific and usability limits
