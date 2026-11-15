@@ -115,9 +115,9 @@ func _build_ui() -> void:
 
 	var head := UIKit.hbox(12)
 	col.add_child(head)
-	head.add_child(UIKit.button("‹ TITLE", func() -> void:
+	head.add_child(UIKit.button("‹ MAP", func() -> void:
 		Sfx.play("back")
-		Game.goto("title"), 17))
+		Game.goto("map"), 17))
 	var title := UIKit.display("MISSIONS", 34, Game.SUN)
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	head.add_child(title)

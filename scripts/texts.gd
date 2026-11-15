@@ -62,19 +62,27 @@ static func science_log() -> String:
 
 
 static func credits() -> String:
-	var t := ("[b]SUNLINE[/b], a NASA Space Apps Challenge 2026 entry (Lunar Landing Site Navigator) by team "
+	var t := ("[b]MOONWARD[/b], a NASA Space Apps Challenge 2026 entry (Lunar Landing Site Navigator) by team "
 		+ "GitCantCommit.\n\n[b][color=#ffd23f]DATA[/color][/b]\n")
 	for s: Dictionary in Mission.data.sources:
 		t += "• [url=%s]%s[/url]%s\n" % [s.url, s.name, (" · doi:" + s.doi) if s.has("doi") else ""]
-	t += ("\n[b][color=#ffd23f]MADE WITH[/color][/b]\n• Godot Engine 4.7 (MIT) · Blender 5.2.\n"
-		+ "• Astronaut, rover, survey beacon, Sun and Earth models: made by our team with MINT. The astronaut is "
-		+ "rigged and animated on our own Blender skeleton.\n"
+	t += ("\n[b][color=#ffd23f]CHECKED AGAINST[/color][/b]\n"
+		+ "• [url=https://pgda.gsfc.nasa.gov/products/69]NASA GSFC PGDA average polar illumination[/url] · "
+		+ "doi:10.1016/j.icarus.2010.10.030\n"
+		+ "• [url=https://quickmap.lroc.asu.edu/]LROC QuickMap[/url] and [url=https://trek.nasa.gov/moon/]NASA Moon "
+		+ "Trek[/url] (skyline cross-checks, by hand)\n\n"
+		+ "[b][color=#ffd23f]CONTEXT[/color][/b]\nNASA VIPER, Artemis IV and Artemis V schedule pages (the analysis "
+		+ "windows are hypothetical, not mission dates); the Surveyor battery report; DSN 810-005 module 301M; NASA "
+		+ "Blue Ghost; the Canadian Space Agency. Lunar gravity from NASA Glenn Research Center.\n\n"
+		+ "[b][color=#ffd23f]MADE WITH[/color][/b]\n• Godot Engine 4.7 (MIT) · Blender 5.2.\n"
+		+ "• Astronaut sprite: standing views made by our team with PixelLab; walk frames drawn from them.\n"
+		+ "• Rover, survey beacon, Sun and Earth models: made by our team with MINT.\n"
 		+ "• Lander, rocks, terrain and Moon globe: built procedurally in Blender from the mission data.\n"
 		+ "• Fonts: Russo One and Chakra Petch (SIL Open Font License).\n"
 		+ "• Sound: synthesised in the game.\n"
 		+ "• Moon textures from LOLA LDEM_4.\n\n"
-		+ "[b][color=#ffd23f]AI USE[/color][/b]\nCode and several 3D models were made with help from AI tools "
-		+ "(including MINT for the team models). Sun and Earth models are illustrative: their positions and sizes "
-		+ "come from the Horizons data, never from the meshes.\n\n"
+		+ "[b][color=#ffd23f]AI USE[/color][/b]\nCode, several 3D models and the astronaut sprite were made with help "
+		+ "from AI tools (MINT for the team models, PixelLab for the astronaut). Sun and Earth models are "
+		+ "illustrative: their positions and sizes come from the Horizons data, never from the meshes.\n\n"
 		+ "Full credits and licences: [url=https://github.com/zero0no1one/GitCantCommit_NASA/blob/main/CREDITS.md]CREDITS.md[/url]")
 	return t

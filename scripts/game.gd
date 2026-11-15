@@ -6,6 +6,7 @@ extends Node
 signal orientation_changed(portrait: bool)
 
 const SCREENS := {
+	"map": "res://scenes/map/map.tscn",
 	"title": "res://scenes/title/title.tscn",
 	"campaign": "res://scenes/campaign/campaign.tscn",
 	"mission": "res://scenes/mission/mission.tscn",
@@ -28,6 +29,8 @@ const LUNAR_G := 1.62	# m/s², also physics/3d/default_gravity
 
 var mission_id := ""		# mission being played (campaign.json id)
 var portrait := false
+var open_compare := false		# the operations screen opens straight into Compare (set by the Moon map)
+var return_to := "campaign"		# where the operations screen's back button goes
 
 var _fade: ColorRect
 var _busy := false
@@ -94,6 +97,7 @@ func play_mission(id: String) -> void:
 	if not Campaign.unlocked(id):
 		return
 	mission_id = id
+	return_to = "campaign"
 	goto("operations" if Campaign.by_id[id].get("operations", false) else "mission")
 
 

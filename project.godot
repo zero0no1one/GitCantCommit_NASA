@@ -10,9 +10,9 @@ config_version=5
 
 [application]
 
-config/name="Sunline"
-config/description="Sunline: a lunar landing game. Plan touchdown by the real Sun, fly the descent and hold the light. NASA Space Apps 2026."
-run/main_scene="res://scenes/title/title.tscn"
+config/name="Moonward"
+config/description="Moonward: plan lunar surface work by the real Sun, Earth and skyline, and make a call you can defend. NASA Space Apps 2026."
+run/main_scene="res://scenes/map/map.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 
 [autoload]

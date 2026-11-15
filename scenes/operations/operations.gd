@@ -48,6 +48,9 @@ func _ready() -> void:
 		Navigator.cards[Navigator.active_index].key = initial_key
 		world.visible = false
 	_plan()
+	if Game.open_compare:		# arrived from the Moon map's COMPARE SITES / Change of Plans
+		Game.open_compare = false
+		navigator_ui.compare()
 	Sfx.music("mission")
 
 func _build_ui() -> void:
@@ -61,8 +64,9 @@ func _build_ui() -> void:
 	root.add_child(col)
 	var top := UIKit.hbox(12)
 	col.add_child(top)
-	top.add_child(_button("MISSIONS", func() -> void: Game.goto("campaign")))
-	var title := UIKit.label("FIRST LIGHT / " + str(Campaign.by_id[Game.mission_id].title).to_upper(), 23, Game.SUN, true)
+	top.add_child(_button("MAP" if Game.return_to == "map" else "MISSIONS", func() -> void: Game.goto(Game.return_to)))
+	var heading := "MOONWARD / COMPARE SITES" if Game.return_to == "map" else "FIRST LIGHT / " + str(Campaign.by_id[Game.mission_id].title).to_upper()
+	var title := UIKit.label(heading, 23, Game.SUN, true)
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	top.add_child(title)
 	top.add_child(_button("VIEW", _cycle_view))

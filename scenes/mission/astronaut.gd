@@ -5,18 +5,16 @@ extends CharacterBody3D
 signal view_changed(first_person: bool)
 
 const EYE_H := 1.62
-const WALK := 0.9		# = WALK_NATIVE: the walk plays at exactly its Blender timing
-const LOPE := 2.3		# = LOPE_NATIVE: the lope plays at exactly its Blender timing
+const WALK := 0.9		# m/s
+const LOPE := 2.3		# m/s (Shift, or a full push of the touch stick)
 const HOP := 2.2
 const PLAY_RADIUS := 380.0
-const WALK_NATIVE := 0.9		# m/s the walk_slow cycle is authored at (blender/scripts/animate_astronaut_locomotion.py)
-const LOPE_NATIVE := 2.3		# m/s the lunar_lope cycle is authored at
+const WALK_NATIVE := 0.9		# m/s at which the sprite's walk frames play at their authored cadence
 
 var frozen := false
 var first_person := false
 var camera: Camera3D
-var model: Node3D
-var anim: AnimationPlayer
+var model: PixelAstronaut
 var scanning := false
 
 var _yaw := 0.0
@@ -48,16 +46,9 @@ func _ready() -> void:
 	floor_snap_length = 0.6
 	floor_max_angle = deg_to_rad(42)
 
-	# Shared NASA-inspired EVA styling, preserving the procedural suit's skeletal clips.
-	model = Models.astronaut()
+	# HD-2D: a four-view pixel-art sprite standing in the 3D world (scenes/common/pixel_astronaut.gd)
+	model = PixelAstronaut.new()
 	add_child(model)
-	SiteWorld.tame_emission(model, 0.7)
-	anim = SiteWorld.find_anim(model)
-	if anim:
-		for a in ["idle", "lunar_lope", "walk_slow", "scan_sweep"]:
-			if anim.has_animation(a):
-				anim.get_animation(a).loop_mode = Animation.LOOP_LINEAR
-		anim.play("idle")
 
 	_cam_yaw = Node3D.new()
 	_cam_yaw.position.y = EYE_H
@@ -99,7 +90,7 @@ func _fit_camera(portrait: bool) -> void:
 
 func face(yaw: float) -> void:
 	_yaw = yaw
-	model.rotation.y = yaw + PI		# the astronaut model faces +Z (Blender -Y); the camera looks along -Z
+	model.facing = Basis(Vector3.UP, yaw) * Vector3.FORWARD		# the way the camera looks
 
 
 func set_view(fp: bool) -> void:
@@ -164,7 +155,7 @@ func _physics_process(delta: float) -> void:
 	if frozen:
 		input = Vector2.ZERO
 	var wish := Basis(Vector3.UP, _yaw) * Vector3(input.x, 0, input.y)
-	# walk by default (the Blender walk cycle at its native speed); Shift, or a full push of the touch stick = lope
+	# walk by default; Shift, or a full push of the touch stick = lope
 	var bounding := Input.is_action_pressed("run") or _stick_vec.length() > 0.85
 	var speed := LOPE if bounding else WALK
 	var v := velocity
@@ -187,37 +178,27 @@ func _physics_process(delta: float) -> void:
 		position = Vector3(0, 10, 0)
 		velocity = Vector3.ZERO
 	if horiz.length() > 0.2:
-		model.rotation.y = lerp_angle(model.rotation.y, atan2(horiz.x, horiz.z), 8.0 * delta)	# +Z toward travel
+		model.facing = horiz.normalized()
 	# footstep dust while moving on the ground, and a puff when landing from a hop
 	_dust.emitting = is_on_floor() and horiz.length() > 0.6
 	if is_on_floor() and not _was_floor:
 		_dust.restart()
 		_dust.emitting = true
 	_was_floor = is_on_floor()
-	if anim:
-		_animate(horiz.length())
+	_animate(horiz.length())
 
 
-## Pick the gait from the actual ground speed and play it at the matching rate, so planted feet don't skate.
-## Native speeds were measured from the planted foot in Blender (walk_slow 0.9 m/s; lunar_lope is a bounding
-## gait that is mostly airborne, tuned to ~2.6 m/s). In the air (hops) the current pose is held.
+## Pick the sprite's frames from the actual ground speed: the walk cadence scales with speed (the lope is the
+## same steps played faster), and airborne hops hold a legs-apart frame.
 func _animate(spd: float) -> void:
-	var want := "idle"
-	var rate := 1.0
 	if scanning:
-		want = "scan_sweep"
-	elif not is_on_floor() and anim.current_animation != "":
-		want = anim.current_animation
-		rate = anim.speed_scale
-	elif spd > 1.4:
-		want = "lunar_lope"
-		rate = clampf(spd / LOPE_NATIVE, 0.7, 1.6)
+		model.play("scan")
+	elif not is_on_floor():
+		model.play("air")
 	elif spd > 0.3:
-		want = "walk_slow"
-		rate = clampf(spd / WALK_NATIVE, 0.5, 2.2)
-	anim.speed_scale = rate
-	if anim.current_animation != want and anim.has_animation(want):
-		anim.play(want, 0.25)
+		model.play("walk", clampf(spd / WALK_NATIVE, 0.6, 2.4))
+	else:
+		model.play("idle")
 
 
 func _unhandled_input(event: InputEvent) -> void:
