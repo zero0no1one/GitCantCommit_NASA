@@ -206,7 +206,7 @@ func _fill_card(m: Dictionary) -> void:
 	if m.get("operations", false):
 		var roadmap: bool = m.get("roadmap", false)
 		_card_body.add_child(UIKit.label("FUTURE ROADMAP" if roadmap else "EXPLORABLE / ENGINEERING VALIDATION PENDING", 17, Game.CYAN, true))
-		var objective := "Future content; no playable or scored mission yet." if roadmap else ("Six hours of powered work including a sunlight interruption." if m.id == "sunset-operations" else "Separate Earth visibility, station geometry and signal reception. Find a 30-minute downlink within a six-hour plan.")
+		var objective := "Future content; no playable or scored mission yet." if roadmap else ("Complete 15 minutes of setup and 45 minutes of observation in continuous full sunlight. Compare windows and file a recommendation or hold." if m.id == "sunset-operations" else "Separate Earth visibility, station geometry and signal reception. Find a 30-minute downlink within a six-hour plan.")
 		_card_body.add_child(UIKit.label(objective, 17, Game.INK, true))
 		_card_body.add_child(UIKit.label("Training objectives. Unsupported conditions remain unknown; no science stars are awarded.", 16, Game.MUTED, true))
 		var open := UIKit.button("ON THE ROADMAP" if roadmap else "PLAN OPERATIONS", func() -> void: Game.play_mission(m.id), 24, "primary")

@@ -44,7 +44,7 @@ func _run() -> bool:
 	schedule[0].activity = "Changed"
 	check(sunset.schedule[0].activity == "Observation request", "Assessment freezes the plan")
 	var campaign: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/campaign.json"))
-	var catalog := Ops.catalog(campaign.missions[0], data.window)
+	var catalog := Ops.catalog(campaign.missions[0], data.window, campaign.missions[2])
 	check(catalog.size() == 4 and catalog[0].title == "Science Outpost", "Intro and Phase 2 catalog")
 	check(catalog[3].roadmap and catalog[3].id == "polar-ice-scout", "Polar Ice Scout remains roadmap")
 	return true

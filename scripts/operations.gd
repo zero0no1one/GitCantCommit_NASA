@@ -13,14 +13,20 @@ const SOURCES := [
 	["CSA: Moon exploration context", "https://www.asc-csa.gc.ca/eng/astronomy/moon-exploration/"],
 ]
 
-static func catalog(intro: Dictionary, window: Dictionary) -> Array:
+static func catalog(intro: Dictionary, window: Dictionary, ridge: Dictionary) -> Array:
 	var first := intro.duplicate(true)
 	first.title = "Science Outpost"
 	first.tagline = "Introduction: choose a site and a window of sunlight."
-	first.brief = "Plan an introductory sunlight window. This arcade exercise assesses illumination only; it does not model electrical or thermal survival. The astronaut is a virtual inspection aid."
+	first.brief = "Establish a science outpost: choose a site, land with two hours of unbroken sunlight, then deliver three sample canisters to the lander and scan two glowing rocks. Samples are collected automatically nearby; face a rock and press E or tap SCAN. This training exercise assesses illumination only; equipment and astronaut activities are illustrative."
+	first.science_goals = {"delivered": 3, "scanned": 2}
 	first.sites = ["apollo-11", "sl3"]
+	# Each site needs a decision window and bonus supported by its own illumination.
+	first.site_plans = {
+		"apollo-11": {"window": intro.window.duplicate(true), "bonus": intro.bonus.duplicate(true)},
+		"sl3": {"window": ridge.window.duplicate(true), "bonus": ridge.bonus.duplicate(true)},
+	}
 	var result: Array = [first]
-	for spec in [["sunset-operations", "Sunset Operations", "Can assigned work continue when sunlight is interrupted?"],
+	for spec in [["sunset-operations", "Last Light Operations", "Fit setup and observation into one uninterrupted sunlight window."],
 		["earth-link", "Earth Link", "When can a supported signal reach Goldstone DSS-14?"],
 		["polar-ice-scout", "Polar Ice Scout", "Future roadmap: investigate polar resources."]]:
 		result.append({"id": spec[0], "title": spec[1], "tagline": spec[2], "number": result.size() + 1,

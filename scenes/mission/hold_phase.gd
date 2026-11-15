@@ -33,6 +33,7 @@ var _delivered := 0
 var _scans: Array[Node3D] = []
 var _scanned := 0
 var _scan_busy := false
+var _finished := false
 
 var _ui: Control
 var _bar: ProgressBar
@@ -72,6 +73,8 @@ func _ready() -> void:
 		world.rover_anim.get_animation("sample_drill_cycle").loop_mode = Animation.LOOP_LINEAR
 	host.banner("HOLD THE LIGHT", Game.SUN)
 	await get_tree().create_timer(1.2).timeout
+	if _finished:
+		return
 	if result.sampled_s == 0:
 		_alarm.text = "NO FULL SUNLIGHT AT TOUCHDOWN"
 		_alarm.visible = true
@@ -255,7 +258,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _scan() -> void:
 	var r := _scan_target()
-	if r == null or _scan_busy or host.paused:
+	if r == null or _scan_busy or host.paused or not _running or _finished:
 		return
 	_scan_busy = true
 	_player.scanning = true
@@ -275,6 +278,10 @@ func _scan() -> void:
 	beam.rotate_object_local(Vector3.RIGHT, PI / 2)
 	await get_tree().create_timer(0.9).timeout
 	beam.queue_free()
+	if not _running or _finished:
+		_player.scanning = false
+		_scan_busy = false
+		return
 	r.set_meta("done", true)
 	(r.material_override as StandardMaterial3D).emission = Game.LIME
 	(r.material_override as StandardMaterial3D).emission_energy_multiplier = 0.4
@@ -288,6 +295,12 @@ func _scan() -> void:
 
 
 func _finish() -> void:
+	if _finished:
+		return
+	_finished = true
+	_running = false
+	_scan_btn.disabled = true
+	_prompt.visible = false
 	finished.emit({"delivered": _delivered, "scanned": _scanned, "spawned": _spawned, "carried_lost": _carried})
 
 
@@ -373,3 +386,5 @@ func _update_hud(done: float) -> void:
 	_sun_pill.add_theme_color_override("font_color", Game.LIME if full else Game.CORAL)
 	_carry_label.text = "CARRYING %d/%d   ·   DELIVERED %d   ·   SCANS %d/%d" % [_carried, CARRY_MAX, _delivered,
 		_scanned, SCAN_TARGETS]
+	if mission.has("science_goals"):
+		_carry_label.text += "\nOUTPOST: SAMPLES %d/%d   |   SCANS %d/%d" % [_delivered, mission.science_goals.delivered, _scanned, mission.science_goals.scanned]

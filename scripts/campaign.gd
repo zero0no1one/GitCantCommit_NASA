@@ -19,7 +19,7 @@ func _ready() -> void:
 		error = "cannot read " + PATH
 		push_error(error)
 		return
-	missions = Operations.catalog(parsed.missions[0], Mission.data.window)
+	missions = Operations.catalog(parsed.missions[0], Mission.data.window, parsed.missions[2])
 	for m: Dictionary in missions:
 		by_id[m.id] = m
 	_cfg.load(SAVE)		# a missing file just means no progress yet

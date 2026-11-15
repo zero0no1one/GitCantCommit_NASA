@@ -30,7 +30,7 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS		# so the pause menu works; world and phases stay pausable
 	var id := Game.mission_id if Campaign.by_id.has(Game.mission_id) else str(Campaign.missions[0].id)
 	Game.mission_id = id
-	mission = Campaign.by_id[id]
+	mission = Campaign.by_id[id].duplicate(true)
 	site = mission.sites[0]
 	touchdown = int(mission.window.start)
 	_build_fx_layer()
@@ -40,6 +40,11 @@ func _ready() -> void:
 
 
 func _make_world(sid: String) -> void:
+	if mission.get("site_plans", {}).has(sid):
+		var plan: Dictionary = mission.site_plans[sid]
+		mission.window = plan.window.duplicate(true)
+		mission.bonus = plan.bonus.duplicate(true)
+		touchdown = clampi(touchdown, int(mission.window.start), int(mission.window.end))
 	if world:
 		world.queue_free()
 	site = sid
@@ -80,6 +85,8 @@ func _show_brief() -> void:
 	for g in ["Hold %d h of unbroken sunlight" % int(mission.need_s / 3600), "Bonus: " + str(mission.bonus.text),
 			"Par: %d points" % int(mission.par)]:
 		goals.add_child(UIKit.label("▶  " + g, 16, Game.CYAN, true))
+	if mission.has("science_goals"):
+		goals.add_child(UIKit.label("Science goals: deliver %d samples and scan %d rocks" % [mission.science_goals.delivered, mission.science_goals.scanned], 16, Game.CYAN, true))
 	var go := UIKit.button("START PLANNING  ▶", func() -> void:
 		Sfx.play("confirm")
 		dim.queue_free(), 24, "primary")
@@ -125,7 +132,7 @@ func _on_landed(info: Dictionary) -> void:
 	_start_phase(h)
 
 
-func _on_hold_done(_stats: Dictionary) -> void:
+func _on_hold_done(stats: Dictionary) -> void:
 	var r := Game.evaluate(site, touchdown, int(mission.need_s))
 	if r.pass:
 		score.sunlight = 1000
@@ -149,6 +156,7 @@ func _on_hold_done(_stats: Dictionary) -> void:
 	d.bonus_met = bonus
 	d.new_best = best and total > 0
 	d.what_if = _what_if(r)
+	d.science_stats = stats.duplicate(true)
 	d.retry.connect(func() -> void: Game.play_mission(mission.id))
 	d.next_mission.connect(func() -> void: Game.play_mission(Campaign.next_after(mission.id)))
 	d.to_campaign.connect(func() -> void: Game.goto("campaign"))

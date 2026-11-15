@@ -11,6 +11,7 @@ const SCREENS := {
 	"campaign": "res://scenes/campaign/campaign.tscn",
 	"mission": "res://scenes/mission/mission.tscn",
 	"operations": "res://scenes/operations/operations.tscn",
+	"last_light": "res://scenes/last_light/last_light.tscn",
 }
 
 # Palette: bold arcade sci-fi (shared with web/shell.html)
@@ -98,6 +99,9 @@ func play_mission(id: String) -> void:
 		return
 	mission_id = id
 	return_to = "campaign"
+	if id == "sunset-operations":
+		goto("last_light")
+		return
 	goto("operations" if Campaign.by_id[id].get("operations", false) else "mission")
 
 

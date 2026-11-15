@@ -13,6 +13,7 @@ var stars := 0
 var bonus_met := false
 var new_best := false
 var what_if := ""
+var science_stats: Dictionary = {}
 
 
 func _ready() -> void:
@@ -43,6 +44,14 @@ func _ready() -> void:
 	v.add_child(star_row)
 	var story := UIKit.rich(_story(), 17)
 	v.add_child(story)
+	if mission.has("science_goals"):
+		var delivered := int(science_stats.get("delivered", 0))
+		var scanned := int(science_stats.get("scanned", 0))
+		var samples_goal := int(mission.science_goals.delivered)
+		var scans_goal := int(mission.science_goals.scanned)
+		var complete := bool(result.pass) and delivered >= samples_goal and scanned >= scans_goal
+		v.add_child(UIKit.label("OUTPOST COMPLETE" if complete else "OUTPOST GOALS INCOMPLETE", 20, Game.LIME if complete else Game.CYAN))
+		v.add_child(UIKit.label("Sunlight: %s | Samples: %d/%d | Scans: %d/%d\nStars reflect the sunlight plan and arcade score. Science activities are illustrative; electrical and thermal survival are not assessed." % ["MET" if result.pass else "MISSED", delivered, samples_goal, scanned, scans_goal], 15, Game.MUTED, true))
 
 	var rows := UIKit.vbox(4)
 	v.add_child(rows)
